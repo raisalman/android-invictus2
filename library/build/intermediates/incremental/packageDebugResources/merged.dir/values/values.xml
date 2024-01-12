@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircularSlider">
+        <attr format="float" name="start_angle"/>
+        <attr format="float" name="end_angle"/>
+        <attr format="dimension" name="border_thickness"/>
+        <attr format="color" name="border_color"/>
+        <attr format="dimension" name="thumb_size"/>
+        <attr format="dimension" name="start_thumb_size"/>
+        <attr format="dimension" name="end_thumb_size"/>
+        <attr format="reference" name="start_thumb_image"/>
+        <attr format="reference" name="end_thumb_image"/>
+        <attr format="color" name="start_thumb_color"/>
+        <attr format="color" name="end_thumb_color"/>
+        <attr format="color" name="arc_color"/>
+        <attr format="dimension" name="arc_dash_size"/>
+        <attr format="enum" name="line_cap">
+            <enum name="BUTT" value="0"/>
+            <enum name="ROUND" value="1"/>
+            <enum name="SQUARE" value="2"/>
+        </attr>
+    </declare-styleable>
+</resources>

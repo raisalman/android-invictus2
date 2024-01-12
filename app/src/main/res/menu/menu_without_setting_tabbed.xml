@@ -1,0 +1,31 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="net.invictusmanagement.invictuslifestyle.activities.TabbedActivity">
+
+    <item
+        android:id="@+id/action_feedback"
+        android:orderInCategory="200"
+        android:title="@string/action_feedback"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_refresh"
+        android:orderInCategory="300"
+        android:title="@string/action_refresh"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_about"
+        android:orderInCategory="400"
+        android:title="@string/action_about"
+        app:showAsAction="never" />
+
+
+    <item
+        android:id="@+id/action_logout"
+        android:orderInCategory="400"
+        android:title="@string/action_logout"
+        app:showAsAction="never" />
+
+</menu>

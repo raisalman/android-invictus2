@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:range="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Thermostat Settings"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:visibility="visible">
+
+            <me.tankery.lib.circularseekbar.CircularSeekBar
+                android:id="@+id/circularSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                app:cs_circle_color="@color/colorGrayLight"
+                app:cs_circle_progress_color="@color/color_success"
+                app:cs_circle_stroke_width="10dp"
+                app:cs_circle_style="round"
+                app:cs_max="100"
+                app:cs_pointer_color="@color/color_success"
+                app:cs_pointer_stroke_width="12dp" />
+
+
+            <View
+                android:id="@+id/viewDisable"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:background="#80F2F2F2"
+                android:clickable="true"
+                android:visibility="gone" />
+
+
+        </FrameLayout>
+
+
+        <com.bozapro.circularsliderrange.CircularSliderRange
+            android:id="@+id/circularRangeSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:rotation="270"
+            android:visibility="visible"
+            app:arc_color="@color/colorGrayLight"
+            app:arc_dash_size="10dp"
+            app:border_color="@color/color_success"
+            app:border_thickness="10dp"
+            app:start_thumb_color="@color/color_success"
+            app:start_thumb_size="15dp"
+            app:thumb_size="15dp" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black_272727" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Select Mode :"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black_272727"
+            android:textStyle="bold" />
+
+
+        <RadioGroup
+            android:id="@+id/rgSelectMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <RadioButton
+                android:id="@+id/rbOff"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/radio_flat_selector"
+                android:button="@android:color/transparent"
+                android:checked="false"
+                android:gravity="center"
+                android:paddingLeft="@dimen/activity_horizontal_margin1"
+                android:paddingTop="@dimen/activity_vertical_margin1"
+                android:paddingRight="@dimen/activity_horizontal_margin1"
+                android:paddingBottom="@dimen/activity_vertical_margin1"
+                android:text="Off"
+                android:textColor="@color/black_272727" />
+
+            <RadioButton
+                android:id="@+id/rbHeat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/radio_flat_selector"
+                android:button="@android:color/transparent"
+                android:checked="false"
+                android:gravity="center"
+                android:paddingLeft="@dimen/activity_horizontal_margin1"
+                android:paddingTop="@dimen/activity_vertical_margin1"
+                android:paddingRight="@dimen/activity_horizontal_margin1"
+                android:paddingBottom="@dimen/activity_vertical_margin1"
+                android:text="Heat"
+                android:textColor="@color/black_272727" />
+
+            <RadioButton
+                android:id="@+id/rbCool"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/radio_flat_selector"
+                android:button="@android:color/transparent"
+                android:gravity="center"
+                android:paddingLeft="@dimen/activity_horizontal_margin1"
+                android:paddingTop="@dimen/activity_vertical_margin1"
+                android:paddingRight="@dimen/activity_horizontal_margin1"
+                android:paddingBottom="@dimen/activity_vertical_margin1"
+                android:text="Cool"
+                android:textColor="@color/black_272727" />
+
+
+            <RadioButton
+                android:id="@+id/rbAuto"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/radio_flat_selector"
+                android:button="@android:color/transparent"
+                android:checked="true"
+                android:gravity="center"
+                android:paddingLeft="@dimen/activity_horizontal_margin1"
+                android:paddingTop="@dimen/activity_vertical_margin1"
+                android:paddingRight="@dimen/activity_horizontal_margin1"
+                android:paddingBottom="@dimen/activity_vertical_margin1"
+                android:text="Auto"
+                android:textColor="@color/black_272727" />
+
+
+        </RadioGroup>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Select Fan :"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/black_272727"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/rgSelectFan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <RadioButton
+                android:id="@+id/rbOffFan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/radio_flat_selector"
+                android:button="@android:color/transparent"
+                android:checked="false"
+                android:enabled="false"
+                android:gravity="center"
+                android:paddingLeft="@dimen/activity_horizontal_margin1"
+                android:paddingTop="@dimen/activity_vertical_margin1"
+                android:paddingRight="@dimen/activity_horizontal_margin1"
+                android:paddingBottom="@dimen/activity_vertical_margin1"
+                android:text="Off"
+                android:textColor="@color/black_272727" />
+
+            <RadioButton
+                android:id="@+id/rbOnFan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/radio_flat_selector"
+                android:button="@android:color/transparent"
+                android:checked="false"
+                android:gravity="center"
+                android:paddingLeft="@dimen/activity_horizontal_margin1"
+                android:paddingTop="@dimen/activity_vertical_margin1"
+                android:paddingRight="@dimen/activity_horizontal_margin1"
+                android:paddingBottom="@dimen/activity_vertical_margin1"
+                android:text="On"
+                android:textColor="@color/black_272727" />
+
+            <RadioButton
+                android:id="@+id/rbAutoFan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/radio_flat_selector"
+                android:button="@android:color/transparent"
+                android:checked="true"
+                android:gravity="center"
+                android:paddingLeft="@dimen/activity_horizontal_margin1"
+                android:paddingTop="@dimen/activity_vertical_margin1"
+                android:paddingRight="@dimen/activity_horizontal_margin1"
+                android:paddingBottom="@dimen/activity_vertical_margin1"
+                android:text="Auto"
+                android:textColor="@color/black_272727" />
+
+
+        </RadioGroup>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="#E9E9E8"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="0dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCancel"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_selector"
+                android:gravity="center"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:text="Cancel"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:cornerRadius="8dp"
+                app:rippleColor="@android:color/transparent" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/colorPrimary"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="0dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSave"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_selector"
+                android:gravity="center"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="10dp"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:cornerRadius="8dp"
+                app:rippleColor="@android:color/transparent" />
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+
+</LinearLayout>

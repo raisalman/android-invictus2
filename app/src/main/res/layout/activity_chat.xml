@@ -1,0 +1,141 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ChatActivity">
+
+    <com.twilio.video.VideoView
+        android:id="@+id/video_local"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_gravity="top|right"
+        android:layout_margin="10dp"
+        app:tviMirror="true"
+        app:tviOverlaySurface="true" />
+
+    <com.twilio.video.VideoView
+        android:id="@+id/video_remote"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:tviMirror="false" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:background="@drawable/call_gradient_image"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:paddingTop="5dp">
+
+        <net.invictusmanagement.invictuslifestyle.customviews.SlideView
+            android:id="@+id/slide_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="2dp"
+            app:slideBackground="@drawable/swipe_bottom_corner_gray"
+            app:slideSrc="@drawable/swipe_drawable"
+            app:slideText="Slide to Open Door"
+            app:slideTextColor="@color/colorPrimary"
+            app:slideTextSize="7sp" />
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/button_open_access_point"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:layout_marginHorizontal="5dp"-->
+        <!--            android:layout_marginVertical="5dp"-->
+        <!--            android:background="@drawable/rounded_rect_unlock_door"-->
+        <!--            android:gravity="center"-->
+        <!--            android:paddingHorizontal="55dp"-->
+        <!--            android:paddingVertical="8dp"-->
+        <!--            android:text="@string/button_open_access_point"-->
+        <!--            android:textColor="@android:color/white"-->
+        <!--            android:textSize="16sp" />-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_alpha"
+            android:orientation="horizontal"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:id="@+id/button_decline"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_circle_red"
+                    android:src="@drawable/ic_decline_call" />
+
+                <TextView
+                    android:id="@+id/txtDecline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/button_decline"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/button_answer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_circle_green"
+                    android:src="@drawable/ic_answer_call" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@string/button_answer"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/button_video_mail"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_pressed_blue"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/button_video_mail"
+                android:textColor="@android:color/white"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical" />
+
+</FrameLayout>

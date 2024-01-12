@@ -1,0 +1,206 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 33
+    buildToolsVersion "26.0.3"
+    defaultConfig {
+        applicationId 'net.invictusmanagement.invictuslifestyle'
+        minSdkVersion 26
+        targetSdkVersion 33
+        versionCode 49
+        versionName "1.43"
+        manifestPlaceholders = [HOCKEYAPP_APP_ID: "e5f277ae9b1b4806a2c43c0b728b6b7b"]
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    productFlavors {
+        flavorDimensions "version"
+        local {
+            dimension "version"
+            buildConfigField "String", "HubListenConnectionString", '"Endpoint=sb://invictusdev.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=5r9ygxc8RUOgJ+olDBw3ogAM3+hKWpPYv3vZl5YCESI="'
+            buildConfigField "String", "MsgHubListenConnectionString", '"Endpoint=sb://invictusdev.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=D8V3OLIiq7wWANXUHoQynHrmup+4YURBkYKrO93e/vY="'
+            buildConfigField "String", "_baseUrl", '"https://mobiledev.invictusmanagement.net/api/v1/"'
+            buildConfigField "String", "_chatHubBaseUrl", '"https://mobilechatdev.invictusmanagement.net/chathub"'
+            buildConfigField "String", "_chatMobileHubBaseUrl", '"https://mobiledev.invictusmanagement.net/chathub"'
+            buildConfigField "String", "APP_NAME", '"Invictus Lifestyle"'
+            buildConfigField "String", "HubName", ' "msghub"'
+            buildConfigField "String", "VideoHubName", ' "videochathub"'
+            buildConfigField "String", "_baseUrlEEN", ' "https://login.eagleeyenetworks.com/"'
+            buildConfigField "String", "_baseUrlBrivoSmartHome", ' "https://api.smarthome.brivo.com/v2/"'
+            resValue "string", "app_name", "Invictus Lifestyle"
+        }
+        local_host {
+            dimension "version"
+            buildConfigField "String", "HubListenConnectionString", '"Endpoint=sb://invictusdev.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=5r9ygxc8RUOgJ+olDBw3ogAM3+hKWpPYv3vZl5YCESI="'
+            buildConfigField "String", "MsgHubListenConnectionString", '"Endpoint=sb://invictusdev.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=D8V3OLIiq7wWANXUHoQynHrmup+4YURBkYKrO93e/vY="'
+            buildConfigField "String", "_baseUrl", '"https://192.168.1.16:44345/api/v1/"'
+            buildConfigField "String", "_chatHubBaseUrl", '"https://mobilechatdev.invictusmanagement.net/chathub"'
+            buildConfigField "String", "_chatMobileHubBaseUrl", '"https://mobiledev.invictusmanagement.net/chathub"'
+            buildConfigField "String", "APP_NAME", '"Invictus Lifestyle"'
+            buildConfigField "String", "HubName", ' "msghub"'
+            buildConfigField "String", "VideoHubName", ' "videochathub"'
+            buildConfigField "String", "_baseUrlEEN", ' "https://login.eagleeyenetworks.com/"'
+            buildConfigField "String", "_baseUrlBrivoSmartHome", ' "https://api.smarthome.brivo.com/v2/"'
+            resValue "string", "app_name", "Invictus Lifestyle"
+        }
+        live {
+            dimension "version"
+            buildConfigField "String", "HubListenConnectionString", '"Endpoint=sb://invictus.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=NplWa4Qt5/wEWAUPasaC0ZuaveafkZw9hi4bOhZaOzo="'
+            buildConfigField "String", "MsgHubListenConnectionString", '"Endpoint=sb://invictus.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=6dYrWhPTo+43ouD/s2RqeIw3GetHvohNISUD4/lXH3w="'
+            buildConfigField "String", "_baseUrl", '"https://mobile.invictusmanagement.net/api/v1/"'
+            buildConfigField "String", "_chatHubBaseUrl", '"https://mobilechat.invictusmanagement.net/chathub"'
+            buildConfigField "String", "_chatMobileHubBaseUrl", '"https://mobile.invictusmanagement.net/chathub"'
+            buildConfigField "String", "APP_NAME", '"Invictus Lifestyle"'
+            buildConfigField "String", "HubName", ' "msghub"'
+            buildConfigField "String", "VideoHubName", ' "videochathub"'
+            buildConfigField "String", "_baseUrlEEN", ' "https://login.eagleeyenetworks.com/"'
+            buildConfigField "String", "_baseUrlBrivoSmartHome", ' "https://api.smarthome.brivo.com/v2/"'
+            resValue "string", "app_name", "Invictus Lifestyle"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'org.jetbrains:annotations:15.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.media2:media2-widget:1.1.2'
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.legacy:legacy-support-v13:1.0.0'
+    implementation 'com.google.android.gms:play-services-gcm:17.0.0'
+
+    implementation 'com.google.firebase:firebase-core:21.1.1'
+    implementation 'com.google.firebase:firebase-messaging:23.1.2'
+    implementation 'com.google.firebase:firebase-iid:21.1.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.microsoft.azure:notification-hubs-android-sdk:1.1.6@aar'
+    implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
+    implementation 'com.twilio:video-android:7.5.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'com.github.halilozercan:BetterVideoPlayer:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    implementation('com.karumi:dexter:6.2.3') {
+        exclude module: 'appcompat-v7'
+    }
+    implementation "android.arch.lifecycle:extensions:1.1.1"
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    //http logging interceptor
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.3'
+    //contact fetch
+    implementation 'com.github.Jagerfield:Mobile-Contacts-Library:v1.7'
+    //viewpagerindicator
+    implementation 'com.romandanylyk:pageindicatorview:1.0.3'
+    implementation 'com.tbuonomo:dotsindicator:4.2'
+
+    //showmore
+    implementation 'com.borjabravo:readmoretextview:2.1.0'
+    //pinchimagezoom
+    implementation 'com.bogdwellers:pinchtozoom:0.1'
+    //timepicker
+    implementation 'com.wdullaer:materialdatetimepicker:4.2.3'
+
+    //exoplayer
+    implementation 'com.google.android.exoplayer:exoplayer:2.18.2'
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.18.2'
+    implementation 'com.google.android.exoplayer:exoplayer-dash:2.18.2'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.18.2'
+    implementation 'com.google.android.exoplayer:exoplayer-rtsp:2.18.2'
+
+    //video compresser
+    implementation 'com.github.AbedElazizShe:LightCompressor:1.2.3'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
+
+    //openpath
+    implementation files('libs/openpath-mobile-access-core-release.aar')
+    // when .aar binary is included in libs folder
+    implementation 'com.madgag.spongycastle:core:1.54.0.0'
+    implementation 'com.madgag.spongycastle:prov:1.54.0.0'
+    implementation 'com.madgag.spongycastle:pkix:1.54.0.0'
+    implementation 'com.madgag.spongycastle:pg:1.54.0.0'
+    implementation 'at.favre.lib:bcrypt:0.9.0'
+    implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5'
+    implementation 'com.amazonaws:aws-android-sdk-core:2.33.0'
+    implementation 'com.amazonaws:aws-android-sdk-logs:2.33.0'
+    implementation 'com.auth0.android:jwtdecode:2.0.1'
+    implementation 'com.auth0:java-jwt:3.10.3'
+    //When update location service check for openpath doors
+    implementation 'com.google.android.gms:play-services-location:20.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'no.nordicsemi.android:ble:2.2.4'
+    implementation 'no.nordicsemi.android.support.v18:scanner:1.4.4'
+    implementation 'com.github.instacart.truetime-android:library:3.5'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    //SignalR Chat
+    implementation 'com.microsoft.signalr:signalr:7.0.0'
+    implementation group: 'org.slf4j', name: 'slf4j-android', version: '1.7.36'
+
+    //walkthrough
+    implementation 'me.samlss:lighter:1.0.3'
+
+    //==================== BRIVO SDK =========================
+    implementation files('libs/brivocore-release.aar')
+    implementation files('libs/brivoaccess-release.aar')
+    implementation files('libs/brivoble-release.aar')
+    implementation files('libs/brivoble-core-release.aar')
+    implementation files('libs/brivoonair-release.aar')
+    implementation files('libs/brivolocalauthentication-release.aar')
+    implementation files('libs/brivonetworkcore-release.aar')
+    implementation files('libs/brivoconfiguration-release.aar')
+    //====================  =========================
+    implementation "androidx.biometric:biometric:1.1.0"
+//    implementation 'org.altbeacon:android-beacon-library:2.17.1'
+    //====================  =========================
+
+    implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
+    implementation 'com.google.android.gms:play-services-wearable:18.0.0'
+
+    implementation 'com.google.android.gms:play-services-auth:20.3.0'
+    implementation 'com.google.android.gms:play-services-auth-api-phone:18.0.1'
+
+    //Wearable APP
+    wearApp project(':wearableapp')
+
+    //PDK SDK
+    implementation "com.prodatakey.android:sdk:1.0.11"
+
+    //crashlytics
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:31.1.0')
+    implementation 'com.google.firebase:firebase-crashlytics'
+    implementation 'com.google.firebase:firebase-analytics'
+
+    // Shortcuts library
+//    implementation "androidx.core:core-ktx:1.9.0"
+//    implementation 'androidx.core:core-google-shortcuts:1.1.0'
+
+    implementation project(':library')
+    implementation 'me.tankery.lib:circularSeekBar:1.4.1'
+
+}
+
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+// Add the Crashlytics Gradle plugin
+apply plugin: 'com.google.firebase.crashlytics'

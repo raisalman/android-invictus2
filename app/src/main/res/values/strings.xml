@@ -1,0 +1,151 @@
+<resources>
+    <!--    <string name="app_name">Invictus Lifestyle</string>-->
+
+    <string name="title_activity_chat">Video Chat</string>
+    <string name="permissions_needed">Camera and microphone permissions are required for video calls.</string>
+    <string name="button_answer">Answer</string>
+    <string name="button_decline">Decline</string>
+    <string name="button_open_access_point">Open Door</string>
+    <string name="button_video_mail">Send to \nVideo Mail</string>
+
+    <string name="title_activity_login">Invictus Lifestyle Login</string>
+    <string name="title_guest_activity_login">Invictus Lifestyle Guest Login</string>
+    <string name="prompt_invictus_title">Invictus Lifestyle</string>
+    <string name="prompt_invictus_subtitle">Access Control Systems | Welcome to the Revolution</string>
+    <string name="prompt_activationCode">Activation Code/Password</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_login_warning">NOTE: Your login information can only be used once.  If your device is lost, replaced or stolen you must contact the leasing office to obtain a new password.</string>
+    <string name="action_activate">Login</string>
+    <string name="error_invalid_login">The email or password is invalid</string>
+    <string name="error_invalid_activationCode">This password is invalid</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="error_field_optional_required">One field is required</string>
+    <string name="error_password_field">Password field not matched</string>
+
+    <string name="title_activity_tabbed">Invictus Lifestyle</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="action_feedback">Feedback</string>
+    <string name="action_about">About</string>
+    <string name="action_logout">Logout</string>
+    <string name="blank"></string>
+    <string name="tap_to_watch_video">Tap to Watch Video</string>
+    <string name="tap_to_download_video">Tap to Download Video</string>
+    <string name="tap_to_delete_video">Tap to Delete Video</string>
+
+    <string name="title_activity_new_ditigal_key">New Digital Key</string>
+    <string name="new_digital_key_intro">Choose a recipient and a valid time frame for this digital key and the recipient will automatically be emailed the key.</string>
+    <string name="prompt_recipient">Recipient</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_from_date">Start Date</string>
+    <string name="prompt_from_time">Start Time</string>
+    <string name="prompt_to_date">End Date</string>
+    <string name="prompt_to_time">End Time</string>
+    <string name="prompt_notes">Notes</string>
+    <string name="action_send">Send</string>
+    <string name="action_request_to_close">Request To Close</string>
+    <string name="error_invalid_date_time">Invalid date and/or time</string>
+    <string name="error_from_date_time_after_to_date_time">End date must be after start date</string>
+    <string name="error_invalid_email">Invalid email address</string>
+    <string name="error_invalid_mobile">Invalid phone number</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing contact completions."</string>
+
+    <string name="title_activity_new_service_key">New Service Key</string>
+    <string name="new_service_key_intro">Choose a recipient and a valid time frame for this service key.</string>
+
+    <string name="title_activity_new_maintenance_request">New Maintenance Request</string>
+    <string name="new_maintenance_request_intro">A maintenance request\'s status will transition from \'Requested\' to \'Active\' and finally to \'Closed\'.  \'Active\' signifies that the request has been assigned and work is in progress.</string>
+    <string name="prompt_title">Title</string>
+    <string name="prompt_description">Description</string>
+
+    <string name="title_activity_new_feedback">New Feedback</string>
+    <string name="prompt_general">General</string>
+    <string name="prompt_bug">Bug</string>
+    <string name="prompt_enhancement">Enhancement</string>
+    <string name="prompt_message">Comments</string>
+    <string name="feedback_better">Help us make this app better!</string>
+    <string name="feedback_intro">We want to make your mobile app experience convenient, user friendly and as helpful as possible.  Please tell us what you like and/or dislike about our mobile app.  Select your feedback type and enter your comments below.</string>
+
+    <string name="title_activity_businesses">Businesses</string>
+    <string name="action_call">Dial/Call</string>
+    <string name="action_map">Show Map</string>
+
+    <string name="title_activity_profile">Settings</string>
+    <string name="pref_category_profile">Profile</string>
+    <string name="pref_displayName">Name in Directory</string>
+    <string name="pref_email">Contact Email</string>
+    <string name="pref_phone">Contact Phone</string>
+    <string name="pref_locationName">Location</string>
+    <string name="pref_leaseRenewalDateUtc">Lease Renewal Date</string>
+    <string name="pref_do_not_disturb">Do Not Disturb</string>
+    <string name="pref_do_not_disturb_description">Blocks incoming calls from kiosks and instructs the caller to leave a message.</string>
+    <string name="pref_haptic_vibration">Haptic Vibration</string>
+    <string name="pref_haptic_vibration_description">ON/OFF Haptic vibration on important tap events</string>
+    <string name="pref_silent_notification">Silent Push Notifications</string>
+    <string name="pref_silent_notification_description">ON/OFF Sound of push notification </string>
+    <string name="pref_category_chat">Video Chat</string>
+    <string name="pref_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="title_activity_promotions">Coupons</string>
+    <string name="favourites">Favorites</string>
+    <string name="all">All</string>
+    <string name="receipt_number">Receipt Number</string>
+    <string name="amount">Amount</string>
+    <string name="amount_paid">Amount Paid</string>
+    <string name="upload_receipt_photo">Upload Receipt Photo</string>
+    <string name="mobile_number">Phone No.</string>
+    <string name="mine">Mine</string>
+    <string name="no_sell_service_available">No sell/service available.</string>
+    <string name="no_favourite_sell_service_available">No favorites sell/service available.</string>
+
+    <string name="title_activity_new_amenities">Amenities</string>
+    <string name="active">Active</string>
+    <string name="valid">Valid</string>
+    <string name="apduservicedesc">Openpath Apdu Service</string>
+    <string name="aiddescription">Openpath Apdu Application</string>
+    <string name="provision">Provision</string>
+    <string name="tap_to_book_amenities">Tap to book amenities</string>
+    <string name="access_point">Access Point</string>
+    <string name="generate_key">Generate Keys</string>
+    <string name="view_facourite_access_points">View favourite access points</string>
+    <string name="anytime">Anytime</string>
+    <string name="setup_autopay">SetUp AutoPay</string>
+    <string name="cancel_autopay">Cancel AutoPay</string>
+    <string name="error_digital_key_refresh">Unable to refresh digital keys. Please try again later.</string>
+    <string name="error_service_key_refresh">Unable to refresh service keys. Please try again later.</string>
+    <string name="error_community_notification">Unable to refresh community notifications. Please try again later.</string>
+    <string name="error_fetching_access_point">Unable to refresh access points. Please try again later.</string>
+    <string name="error_no_access_points_available">No access points available.</string>
+    <string name="error_load_coupon_categories">Unable to refresh coupon categories. Please try again later.</string>
+    <string name="error_load_business">Unable to refresh businesses. Please try again later.</string>
+    <string name="role_leasing_officer">LeasingAgent</string>
+    <string name="role_resident">Resident</string>
+    <string name="role_property_manager">PropertyManager</string>
+    <string name="role_vendor">Vendor</string>
+    <string name="role_prospect">Prospect</string>
+    <string name="role_guest">Guest</string>
+    <string name="role_facility">FacilitiesTeam</string>
+    <string name="no_payment_history_found">No Payment History Found</string>
+    <string name="no_favorite_access_points_available">No favorite access points available.</string>
+    <string name="no_access_point_with_swipe_down_to_refresh">No access points available.\nSwipe down to refresh.</string>
+    <string name="no_camera_found">No Cameras Found</string>
+    <string name="no_category_found">No Category Found</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_reset">Reset</string>
+    <string name="action_delete">Delete</string>
+    <string name="no_topic_found">No Chat Topic Found</string>
+    <string name="no_pending_chat_request_found">No Pending Chat Requests Found</string>
+    <string name="access_point_hint">Open any connected door, anytime, from anywhere.
+        \nSlide to unlock the door.\nLong press, move items to make favorite. </string>
+    <string name="label_tasks">Access Points List</string>
+
+    <string name="brivo_sample_please_enable_ble_to_continue">Please enable bluetooth to continue</string>
+    <string name="brivo_sample_location_permission_denied">Location permission denied</string>
+    <string name="brivo_sample_door_unlocked">Door Unlocked</string>
+    <string name="brivo_sample_licence_failed">Licence failed</string>
+    <string name="brivo_sample_door_unlocked_failed">Door Unlocked Failed</string>
+    <string name="brivo_sample_failed_to_unlock_door">Failed to unlock door</string>
+    <string name="brivo_sample_failed_to_unlock_door_timeout">Unlock request timed out</string>
+
+</resources>

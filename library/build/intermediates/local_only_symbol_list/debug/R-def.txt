@@ -1,0 +1,20 @@
+R_DEF: Internal format may change without notice
+local
+attr? arc_color
+attr? arc_dash_size
+attr? border_color
+attr? border_thickness
+attr? end_angle
+attr? end_thumb_color
+attr? end_thumb_image
+attr? end_thumb_size
+attr? line_cap
+attr? start_angle
+attr? start_thumb_color
+attr? start_thumb_image
+attr? start_thumb_size
+attr? thumb_size
+id BUTT
+id ROUND
+id SQUARE
+styleable CircularSlider start_angle end_angle border_thickness border_color thumb_size start_thumb_size end_thumb_size start_thumb_image end_thumb_image start_thumb_color end_thumb_color arc_color arc_dash_size line_cap

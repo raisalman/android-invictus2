@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "77387106956",
+    "firebase_url": "https://invictus-lifestyle.firebaseio.com",
+    "project_id": "invictus-lifestyle",
+    "storage_bucket": "invictus-lifestyle.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:77387106956:android:3d265ed72f649ddf",
+        "android_client_info": {
+          "package_name": "net.invictusmanagement.invictuslifestyle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "77387106956-3dfp2stp5hve49qu1vusamjlb3d0hr5v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6n86Fo2-aZejQAfrlVAgggTwNhbN8ur0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "77387106956-3dfp2stp5hve49qu1vusamjlb3d0hr5v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "77387106956-0psh2gcm09f43faes6dcv88qug8cjl02.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "net.invictusmanagement.invictus"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

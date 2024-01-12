@@ -1,0 +1,10 @@
+com/bozapro/circularsliderrange/ThumbEvent.java
+ com.bozapro.circularsliderrange.ThumbEvent
+com/bozapro/circularsliderrange/CircularSliderRange.java
+ com.bozapro.circularsliderrange.CircularSliderRange
+ com.bozapro.circularsliderrange.CircularSliderRange$1
+ com.bozapro.circularsliderrange.CircularSliderRange$LineCap
+ com.bozapro.circularsliderrange.CircularSliderRange$OnSliderRangeMovedListener
+ com.bozapro.circularsliderrange.CircularSliderRange$Thumb
+com/bozapro/circularsliderrange/BuildConfig.java
+ com.bozapro.circularsliderrange.BuildConfig

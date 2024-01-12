@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clMain"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clInside"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingTop="20dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/llPostImage"
+            android:layout_width="90dp"
+            android:layout_height="130dp"
+            android:background="@drawable/layout_bg_post_image"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgPost"
+                android:layout_width="62dp"
+                android:layout_height="70dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/img_service_list" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llPostDefine"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/layout_bg_post_type"
+            android:gravity="center"
+            android:minWidth="60dp"
+            android:visibility="visible"
+            app:layout_constraintEnd_toStartOf="@id/llLikeEdit"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/llPostImage"
+            app:layout_constraintTop_toTopOf="@id/llPostImage">
+
+            <TextView
+                android:id="@+id/tvPostDefine"
+                android:textStyle="normal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp"
+                tools:text="Service" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvPostTitle"
+            android:textStyle="bold"
+            android:layout_width="@dimen/space_0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:ellipsize="marquee"
+            android:maxLines="2"
+            android:singleLine="true"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@id/llLikeEdit"
+            app:layout_constraintStart_toEndOf="@id/llPostImage"
+            app:layout_constraintTop_toBottomOf="@+id/llPostDefine"
+            tools:text="iPhone 11 Pro Max" />
+
+        <LinearLayout
+            android:id="@+id/llLikeEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvPostTitle"
+            app:layout_constraintTop_toTopOf="@id/llPostImage">
+
+            <ImageView
+                android:id="@+id/imgFavorite"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:src="@drawable/ic_unfavorite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imgEdit"
+                app:layout_constraintTop_toTopOf="@id/llPostImage" />
+
+            <ImageView
+                android:id="@+id/imgEdit"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:src="@drawable/ic_edit"
+                app:layout_constraintEnd_toStartOf="@id/imgFavorite"
+                app:layout_constraintStart_toEndOf="@id/tvPostTitle"
+                app:layout_constraintTop_toTopOf="@id/llPostImage" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/llProductCondition"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/layout_bg_post_condition"
+            android:gravity="center"
+            android:minWidth="100dp"
+            android:visibility="visible"
+            app:layout_constraintStart_toEndOf="@id/llPostImage"
+            app:layout_constraintTop_toBottomOf="@id/tvPostTitle">
+
+            <TextView
+                android:id="@+id/tvProductCondition"
+                android:textSize="13sp"
+                android:textStyle="normal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                tools:text="Good" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            android:layout_width="@dimen/space_0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:ellipsize="marquee"
+            android:maxLines="2"
+            android:textColor="@color/black_838383"
+            app:layout_constraintEnd_toStartOf="@id/llLikeEdit"
+            app:layout_constraintStart_toEndOf="@id/llPostImage"
+            app:layout_constraintTop_toBottomOf="@id/llProductCondition"
+            tools:text="ahndfkhaksdfj asjdflja jaldjfal jdlafj lasdj a sldjflajsdf alsjdfl ajsd asdlk jasdlj lkasdjflajsdf" />
+
+        <TextView
+            android:id="@+id/tvPostDate"
+            android:textStyle="normal"
+            android:layout_width="@dimen/space_0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="7dp"
+            android:maxLines="1"
+            android:textColor="@color/black_272727"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/llLikeEdit"
+            app:layout_constraintStart_toEndOf="@id/llPostImage"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription"
+            tools:text="Tuesday, March 28, 2017" />
+
+        <TextView
+            android:id="@+id/tvProductServicePrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="16sp"
+            android:layout_marginTop="5dp"
+            android:maxLines="1"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/llPostImage"
+            app:layout_constraintTop_toBottomOf="@id/tvPostDate"
+            tools:text="49,000 INR" />
+
+        <TextView
+            android:id="@+id/tvPerSerice"
+            android:textStyle="normal"
+            android:layout_width="@dimen/space_0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="2dp"
+            android:alpha="0.5"
+            android:maxLines="1"
+            android:text="per service"
+            android:textColor="@color/black_838383"
+            android:textSize="11sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvProductServicePrice"
+            app:layout_constraintEnd_toStartOf="@+id/llPostApproval"
+            app:layout_constraintStart_toEndOf="@id/tvProductServicePrice"
+            app:layout_constraintTop_toBottomOf="@id/tvPostDate" />
+
+        <LinearLayout
+            android:id="@+id/llPostApproval"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/layout_bg_post_status"
+            android:gravity="center"
+            android:minWidth="60dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/tvProductServicePrice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPostDate">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPostApproval"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColor="@color/black_B1B1B1"
+                android:textSize="10sp"
+                tools:text="Pending" />
+
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:alpha="0.7"
+        android:background="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clInside" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

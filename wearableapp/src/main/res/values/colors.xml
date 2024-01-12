@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Orginal colors
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    -->
+
+    <!--
+    Green: #2bb670
+    Dark Green: #129D57
+    -->
+
+    <color name="colorPrimary">#033e93</color>
+    <color name="colorPrimaryDark">#022e6d</color>
+    <color name="colorAccent">#272727</color>
+
+    <color name="splashBackground">#fafafa</color>
+
+    <color name="iconBackground">@color/colorPrimary</color>
+    <color name="fabBackground">@color/colorAccent</color>
+    <color name="buttonTextColor">#ffffff</color>
+
+    <color name="maintReqActive">@color/colorPrimaryDark</color>
+    <color name="maintReqRequested">@color/colorPrimary</color>
+    <color name="maintReqClosed">#dcdcdc</color>
+
+    <color name="digitalKeyValid">@color/colorPrimaryDark</color>
+    <color name="digitalKeyUpcoming">@color/colorPrimary</color>
+    <color name="digitalKeyExpired">#dcdcdc</color>
+
+    <color name="bg_read">#ffffff</color>
+    <color name="bg_un_read">#F0F4FB</color>
+
+    <color name="bg_switch">#F0F5FB</color>
+    <color name="colorSwitchTextNotSelected">#7d7e81</color>
+    <color name="colorTabTextNotSelected">#767676</color>
+    <color name="colorTabTextNotSelectedCustom">#B4C5DF</color>
+
+    <color name="colorPrimaryLight">#EBF2FA</color>
+    <color name="colorGrayLight">#F2F2F2</color>
+    <color name="colorGrayDark">#636363</color>
+    <color name="white_F7F7FF">#f7f7ff</color>
+    <color name="gray_8F8F8F">#8f8f8f</color>
+    <color name="gray_f7f7f7">#f7f7f7</color>
+    <color name="blue_0a19ff">#0a19ff</color>
+    <color name="red_E21533">#E21532</color>
+    <color name="red_E2A19D">#E2A19D</color>
+    <color name="black_272727">#272727</color>
+    <color name="blue_013B97">#013B97</color>
+    <color name="black_838383">#838383</color>
+    <color name="black_B1B1B1">#B1B1B1</color>
+    <color name="blue_6E97D3">#6E97D3</color>
+    <color name="black_757575">#757575</color>
+    <color name="gray_8A8A8B">#8A8A8B</color>
+
+    <color name="event_color_01">#59dbe0</color>
+    <color name="event_color_02">#f57f68</color>
+    <color name="event_color_03">#87d288</color>
+    <color name="event_color_04">#f8b552</color>
+    <color name="toolbar">#efefef</color>
+    <color name="toolbar_text">#8f000000</color>
+    <color name="accent">#2789e4</color>
+    <color name="color_yellow">#8B8000</color>
+    <color name="color_red">#ff0000</color>
+    <color name="color_green">#ff99cc00</color>
+    <color name="color_success">#047C08</color>
+    <color name="black">#000000</color>
+
+</resources>

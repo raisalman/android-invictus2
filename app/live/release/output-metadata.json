@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "net.invictusmanagement.invictuslifestyle",
+  "variantName": "processLiveReleaseResources",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "versionCode": 48,
+      "versionName": "1.42",
+      "outputFile": "app-live-release.apk"
+    }
+  ]
+}

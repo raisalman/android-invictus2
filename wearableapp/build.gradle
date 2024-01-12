@@ -1,0 +1,113 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdkVersion 31
+
+    defaultConfig {
+        applicationId "net.invictusmanagement.invictuslifestyle"
+        minSdkVersion 25
+        targetSdkVersion 31
+        versionCode 33
+        versionName "1.1"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildFeatures {
+        viewBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    productFlavors {
+        flavorDimensions "version"
+        local {
+            dimension "version"
+            buildConfigField "String", "HubListenConnectionString", '"Endpoint=sb://invictusdev.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=5r9ygxc8RUOgJ+olDBw3ogAM3+hKWpPYv3vZl5YCESI="'
+            buildConfigField "String", "MsgHubListenConnectionString", '"Endpoint=sb://invictusdev.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=D8V3OLIiq7wWANXUHoQynHrmup+4YURBkYKrO93e/vY="'
+            buildConfigField "String", "_baseUrl", '"https://mobiledev.invictusmanagement.net/api/v1/"'
+            buildConfigField "String", "_chatHubBaseUrl", '"https://mobilechatdev.invictusmanagement.net/chathub"'
+            buildConfigField "String", "APP_NAME", '"Invictus Lifestyle"'
+            buildConfigField "String", "HubName", ' "msghub"'
+            buildConfigField "String", "VideoHubName", ' "videochathub"'
+            resValue "string", "app_name", "Invictus Lifestyle"
+
+        }
+        local_host {
+            dimension "version"
+            buildConfigField "String", "HubListenConnectionString", '"Endpoint=sb://invictusdev.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=5r9ygxc8RUOgJ+olDBw3ogAM3+hKWpPYv3vZl5YCESI="'
+            buildConfigField "String", "MsgHubListenConnectionString", '"Endpoint=sb://invictusdev.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=D8V3OLIiq7wWANXUHoQynHrmup+4YURBkYKrO93e/vY="'
+            buildConfigField "String", "_baseUrl", '"https://192.168.1.16:44345/api/v1/"'
+            buildConfigField "String", "_chatHubBaseUrl", '"https://mobilechatdev.invictusmanagement.net/chathub"'
+            buildConfigField "String", "APP_NAME", '"Invictus Lifestyle"'
+            buildConfigField "String", "HubName", ' "msghub"'
+            buildConfigField "String", "VideoHubName", ' "videochathub"'
+            resValue "string", "app_name", "Invictus Lifestyle"
+
+        }
+        live {
+            dimension "version"
+            buildConfigField "String", "HubListenConnectionString", '"Endpoint=sb://invictus.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=NplWa4Qt5/wEWAUPasaC0ZuaveafkZw9hi4bOhZaOzo="'
+            buildConfigField "String", "MsgHubListenConnectionString", '"Endpoint=sb://invictus.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=6dYrWhPTo+43ouD/s2RqeIw3GetHvohNISUD4/lXH3w="'
+            buildConfigField "String", "_baseUrl", '"https://mobile.invictusmanagement.net/api/v1/"'
+            buildConfigField "String", "_chatHubBaseUrl", '"https://mobilechat.invictusmanagement.net/chathub"'
+            buildConfigField "String", "APP_NAME", '"Invictus Lifestyle"'
+            buildConfigField "String", "HubName", ' "msghub"'
+            buildConfigField "String", "VideoHubName", ' "videochathub"'
+            resValue "string", "app_name", "Invictus Lifestyle"
+        }
+    }
+}
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.google.android.gms:play-services-wearable:17.1.0'
+
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.percentlayout:percentlayout:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'androidx.wear:wear:1.2.0'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    compileOnly 'com.google.android.wearable:wearable:2.8.1'
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    //http logging interceptor
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.3.0'
+
+    //==================== BRIVO SDK =========================
+    implementation files('libs/brivocore-release.aar')
+    implementation files('libs/brivoaccess-release.aar')
+    implementation files('libs/brivoble-release.aar')
+    implementation files('libs/brivoble-core-release.aar')
+    implementation files('libs/brivoonair-release.aar')
+    implementation files('libs/brivolocalauthentication-release.aar')
+    implementation files('libs/brivonetworkcore-release.aar')
+    //====================  =========================
+    implementation "androidx.biometric:biometric:1.1.0"
+    //====================  =========================
+
+    // ProgressBar
+    implementation 'me.zhanghai.android.materialprogressbar:library:1.6.1'
+    //Permission
+    implementation('com.karumi:dexter:5.0.0') {
+        exclude module: 'appcompat-v7'
+    }
+}

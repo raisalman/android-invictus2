@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_generate_keys"
+        android:shortcutId="quick_key"
+        android:shortcutShortLabel="@string/generate_key">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetClass="net.invictusmanagement.invictuslifestyle.activities.MainActivity"
+            android:targetPackage="net.invictusmanagement.invictuslifestyle">
+            <extra
+                android:name="isQuickKey"
+                android:value="true" />
+            <extra
+                android:name="isAccessPoint"
+                android:value="false" />
+        </intent>
+
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_access_point"
+        android:shortcutId="access_point"
+        android:shortcutShortLabel="@string/access_point">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetClass="net.invictusmanagement.invictuslifestyle.activities.MainActivity"
+            android:targetPackage="net.invictusmanagement.invictuslifestyle">
+            <extra
+                android:name="isAccessPoint"
+                android:value="true" />
+            <extra
+                android:name="isQuickKey"
+                android:value="false" />
+        </intent>
+    </shortcut>
+
+    <capability android:name="actions.intent.OPEN_APP_FEATURE">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="net.invictusmanagement.invictuslifestyle.activities.MainActivity"
+            android:targetPackage="net.invictusmanagement.invictuslifestyle">
+            <parameter
+                android:name="feature"
+                android:key="feature" />
+            <extra
+                android:name="isQuickKey"
+                android:value="false" />
+            <extra
+                android:name="isAccessPoint"
+                android:value="true" />
+        </intent>
+    </capability>
+
+    <shortcut
+        android:enabled="false"
+        android:shortcutId="access_points"
+        android:shortcutShortLabel="@string/label_tasks">
+        <capability-binding android:key="actions.intent.OPEN_APP_FEATURE">
+            <parameter-binding
+                android:key="feature"
+                android:value="@array/completed_tasks_synonyms" />
+        </capability-binding>
+    </shortcut>
+
+    <!--    <shortcut-->
+    <!--        android:shortcutId="completed_tasks"-->
+    <!--        android:shortcutShortLabel="@string/label_completed"-->
+    <!--        android:enabled="false">-->
+    <!--        <capability-binding-->
+    <!--            android:key="actions.intent.OPEN_APP_FEATURE">-->
+    <!--            <parameter-binding-->
+    <!--                android:key="feature"-->
+    <!--                android:value="@array/completed_tasks_synonyms" />-->
+    <!--        </capability-binding>-->
+    <!--    </shortcut>-->
+</shortcuts>

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="top|center"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:transitionGroup="true">
+
+    <LinearLayout
+        android:id="@+id/llNoGates"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_transperent_widget"
+            android:clickable="true"
+            android:columnCount="2"
+            android:focusable="true"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin">
+
+            <TextView
+                android:id="@+id/tvWarning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ellipsize="marquee"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="Please restart app."
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+        </GridLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/llGates"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_transperent_widget"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+
+        <GridLayout
+            android:id="@+id/glGate1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:columnCount="2"
+            android:focusable="true"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvGate1Name"
+                    android:layout_width="@dimen/space_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="2dp"
+                    android:layout_weight="1"
+                    android:ellipsize="marquee"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvGate1open"
+                    android:layout_width="@dimen/space_0"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:background="@drawable/bg_circle_widget"
+                    android:ellipsize="marquee"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="Open"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/exo_white"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+
+        </GridLayout>
+
+        <LinearLayout
+            android:id="@+id/llView"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/bg_line_widget"
+            android:orientation="horizontal" />
+
+        <GridLayout
+            android:id="@+id/glGate2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:columnCount="2"
+            android:focusable="true"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvGate2Name"
+                    android:layout_width="@dimen/space_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="2dp"
+                    android:layout_weight="1"
+                    android:ellipsize="marquee"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvGate2open"
+                    android:layout_width="@dimen/space_0"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:background="@drawable/bg_circle_widget"
+                    android:ellipsize="marquee"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="Open"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/exo_white"
+                    android:textStyle="normal" />
+            </LinearLayout>
+        </GridLayout>
+
+        <GridLayout
+            android:id="@+id/glGate3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:columnCount="2"
+            android:focusable="true"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvGate3Name"
+                    android:layout_width="@dimen/space_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="2dp"
+                    android:layout_weight="1"
+                    android:ellipsize="marquee"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvGate3open"
+                    android:layout_width="@dimen/space_0"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:background="@drawable/bg_circle_widget"
+                    android:ellipsize="marquee"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="Open"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/exo_white"
+                    android:textStyle="normal" />
+            </LinearLayout>
+        </GridLayout>
+
+        <GridLayout
+            android:id="@+id/glGate4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:columnCount="2"
+            android:focusable="true"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvGate4Name"
+                    android:layout_width="@dimen/space_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="2dp"
+                    android:layout_weight="1"
+                    android:ellipsize="marquee"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvGate4open"
+                    android:layout_width="@dimen/space_0"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:background="@drawable/bg_circle_widget"
+                    android:ellipsize="marquee"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="Open"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/exo_white"
+                    android:textStyle="normal" />
+            </LinearLayout>
+        </GridLayout>
+
+        <GridLayout
+            android:id="@+id/glGate5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:columnCount="2"
+            android:focusable="true"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvGate5Name"
+                    android:layout_width="@dimen/space_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="2dp"
+                    android:layout_weight="1"
+                    android:ellipsize="marquee"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvGate5open"
+                    android:layout_width="@dimen/space_0"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:background="@drawable/bg_circle_widget"
+                    android:ellipsize="marquee"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="Open"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/exo_white"
+                    android:textStyle="normal" />
+            </LinearLayout>
+        </GridLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

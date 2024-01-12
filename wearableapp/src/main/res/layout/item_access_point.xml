@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/glMain"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="5dp"
+    android:layout_marginVertical="@dimen/line_separation_margin"
+    android:background="@drawable/rounded_corner_bordered_gray"
+    android:focusable="true"
+    android:orientation="vertical">
+
+    <net.invictusmanagement.invictuslifestyle.customviews.SlideView
+        android:id="@+id/slide_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="2dp"
+        app:slideBackground="@drawable/rounded_bottom_corner_gray"
+        app:slideSrc="@drawable/swipe_drawable"
+        app:slideText="Slide to unlock"
+        app:slideTextColor="@color/colorPrimary"
+        app:slideTextSize="5sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorSwitchTextNotSelected" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="2dp"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/icon_background"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/rounded_icon" />
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_directions_walk_white_24dp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:ellipsize="marquee"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:text="Main Vehicle Gate"
+                    android:textColor="@color/black_272727"
+                    android:textSize="10sp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:text="Vehicle"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

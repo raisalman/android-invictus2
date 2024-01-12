@@ -1,0 +1,19 @@
+com.bozapro.circularsliderrange
+attr arc_color
+attr arc_dash_size
+attr border_color
+attr border_thickness
+attr end_angle
+attr end_thumb_color
+attr end_thumb_image
+attr end_thumb_size
+attr line_cap
+attr start_angle
+attr start_thumb_color
+attr start_thumb_image
+attr start_thumb_size
+attr thumb_size
+id BUTT
+id ROUND
+id SQUARE
+styleable CircularSlider arc_color arc_dash_size border_color border_thickness end_angle end_thumb_color end_thumb_image end_thumb_size line_cap start_angle start_thumb_color start_thumb_image start_thumb_size thumb_size

@@ -1,0 +1,1414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefresh"
+    android:name=".HomeFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:tag=".HomeFragment"
+    tools:context=".fragments.HomeFragment">
+
+    <ScrollView
+        android:id="@+id/svMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/welcome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:padding="20dp"
+                android:text="Welcome!"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/buttonTextColor" />
+
+            <Button
+                android:id="@+id/btnUpdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Update"
+                android:textColor="@color/black_272727"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+
+                <SurfaceView
+                    android:id="@+id/media"
+                    android:layout_width="360dp"
+                    android:layout_height="375dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:visibility="visible" />
+
+                <com.google.android.exoplayer2.ui.StyledPlayerView
+                    android:id="@+id/idExoPlayerVIew"
+                    android:layout_width="360dp"
+                    android:layout_height="375dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    app:show_buffering="always"
+                    app:use_controller="false" />
+
+                <ImageView
+                    android:id="@+id/imgTicker"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/rounded_icon"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_ticket"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/addViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="375dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:weightSum="1"
+                    app:layout_constraintBottom_toBottomOf="@id/addViewPager"
+                    app:layout_constraintEnd_toEndOf="@id/addViewPager"
+                    app:layout_constraintStart_toStartOf="@id/addViewPager">
+
+                    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+                        android:id="@+id/dots_indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:visibility="gone"
+                        app:dotsColor="@color/gray_8F8F8F"
+                        app:dotsCornerRadius="4dp"
+                        app:dotsSize="10dp"
+                        app:dotsSpacing="4dp"
+                        app:dotsWidthFactor="1"
+                        app:progressMode="false"
+                        app:selectedDotColor="@color/colorPrimary" />
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/llOriginal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:id="@+id/tvMagicDoor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorAccent"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="11dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:gravity="center"
+                        android:padding="12dp"
+                        android:text="Unlock Nearby Brivo Door"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:id="@+id/ll_access_points"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorPrimaryDark"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="11dp">
+
+                        <TextView
+                            style="@style/TextAppearance.AppCompat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="11dp"
+                            android:gravity="center"
+                            android:text="Access Points "
+                            android:textAllCaps="true"
+                            android:textColor="@color/buttonTextColor"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:gravity="top">
+
+                            <TextView
+                                android:id="@+id/tabDotAccesspoint"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="top"
+                                android:text="\u00B7"
+                                android:textColor="#ff0000"
+                                android:textSize="41dp"
+                                android:textStyle="bold"
+                                android:visibility="invisible" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_brivo_devices"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorAccent"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="11dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            style="@style/TextAppearance.AppCompat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="11dp"
+                            android:gravity="center"
+                            android:text="Smart Home "
+                            android:textAllCaps="true"
+                            android:textColor="@color/buttonTextColor"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:gravity="top">
+
+                            <TextView
+                                android:id="@+id/tabDotBrivoDevices"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="top"
+                                android:text="\u00B7"
+                                android:textColor="#ff0000"
+                                android:textSize="41dp"
+                                android:textStyle="bold"
+                                android:visibility="invisible" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_service_keys"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorAccent"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="11dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            style="@style/TextAppearance.AppCompat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="11dp"
+                            android:gravity="center"
+                            android:text="Service Keys "
+                            android:textAllCaps="true"
+                            android:textColor="@color/buttonTextColor"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:gravity="top">
+
+                            <TextView
+                                android:id="@+id/tabDotServiceKey"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="top"
+                                android:text="\u00B7"
+                                android:textColor="#ff0000"
+                                android:textSize="41dp"
+                                android:textStyle="bold"
+                                android:visibility="invisible" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:id="@+id/ll_service_keys2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorAccent"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="11dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            style="@style/TextAppearance.AppCompat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="11dp"
+                            android:gravity="center"
+                            android:text="Service Keys "
+                            android:textAllCaps="true"
+                            android:textColor="@color/buttonTextColor"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:gravity="top">
+
+                            <TextView
+                                android:id="@+id/tabDotServiceKey2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="top"
+                                android:text="\u00B7"
+                                android:textColor="#ff0000"
+                                android:textSize="41dp"
+                                android:textStyle="bold"
+                                android:visibility="invisible" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_coupons"
+                        android:layout_width="@dimen/space_0"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorAccent"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="11dp">
+
+                        <TextView
+                            style="@style/TextAppearance.AppCompat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="11dp"
+                            android:gravity="center"
+                            android:text="Coupons "
+                            android:textAllCaps="true"
+                            android:textColor="@color/buttonTextColor"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:gravity="top">
+
+                            <TextView
+                                android:id="@+id/tabDotCoupons"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="center"
+                                android:text="\u00B7"
+                                android:textColor="#ff0000"
+                                android:textSize="41dp"
+                                android:textStyle="bold"
+                                android:visibility="invisible" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </LinearLayout>
+                    <!--   <Button
+                           android:id="@+id/button_coupons"
+                           android:layout_width="0dp"
+                           android:layout_height="wrap_content"
+                           android:layout_margin="1dp"
+                           android:layout_weight="1"
+                           android:background="@color/colorPrimary"
+                           android:padding="@dimen/button_padding"
+                           android:text="Coupons"
+                           android:textColor="@color/buttonTextColor" />-->
+
+                    <LinearLayout
+                        android:id="@+id/ll_digital_key"
+                        android:layout_width="@dimen/space_0"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="11dp">
+
+                        <TextView
+                            style="@style/TextAppearance.AppCompat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="11dp"
+                            android:gravity="center"
+                            android:text="Digital Keys "
+                            android:textAllCaps="true"
+                            android:textColor="@color/buttonTextColor"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:gravity="top">
+
+                            <TextView
+                                android:id="@+id/tabDotDigitalKey"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="top"
+                                android:text="\u00B7"
+                                android:textColor="#ff0000"
+                                android:textSize="41dp"
+                                android:textStyle="bold"
+                                android:visibility="invisible" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </LinearLayout>
+
+                    <!--    <Button
+                            android:id="@+id/button_digital_key"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="1dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorAccent"
+                            android:padding="@dimen/button_padding"
+                            android:text="Digital Key"
+                            android:textColor="@color/buttonTextColor" />-->
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_notification"
+                        android:layout_width="@dimen/space_0"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="11dp">
+
+                        <TextView
+                            android:id="@+id/button_notifications"
+                            style="@style/TextAppearance.AppCompat.Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="11dp"
+                            android:gravity="center"
+                            android:maxLines="2"
+                            android:text="Notifications "
+                            android:textAllCaps="true"
+                            android:textColor="@color/buttonTextColor"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:gravity="top">
+
+                            <TextView
+                                android:id="@+id/tabDotNotification"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="top"
+                                android:text="\u00B7"
+                                android:textColor="#ff0000"
+                                android:textSize="41dp"
+                                android:textStyle="bold"
+                                android:visibility="invisible" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <!--<TextView
+                            android:id="@+id/tvCount"
+                            style="@style/TextAppearance.AppCompat.Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="2dp"
+                            android:background="@drawable/layout_bg_round_white"
+                            android:gravity="center"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:visibility="gone"
+                            tools:text="20" />-->
+
+                    </LinearLayout>
+
+                    <!--<LinearLayout
+                        android:id="@+id/ll_maintenance_reqs"
+                        android:layout_width="@dimen/space_0"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorAccent"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="11dp">
+
+                        <TextView
+                            style="@style/TextAppearance.AppCompat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="11dp"
+                            android:gravity="center"
+                            android:text="Maint Requests "
+                            android:textAllCaps="true"
+                            android:textColor="@color/buttonTextColor"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:gravity="top">
+
+                            <TextView
+                                android:id="@+id/tabDotMaintReq"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="top"
+                                android:text="\u00B7"
+                                android:textColor="#ff0000"
+                                android:textSize="41dp"
+                                android:textStyle="bold"
+                                android:visibility="invisible" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </LinearLayout>-->
+
+                    <LinearLayout
+                        android:id="@+id/ll_rental_tool"
+                        android:layout_width="@dimen/space_0"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorAccent"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="11dp">
+
+                        <TextView
+                            style="@style/TextAppearance.AppCompat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="11dp"
+                            android:gravity="center"
+                            android:text="Renter Tools "
+                            android:textAllCaps="true"
+                            android:textColor="@color/buttonTextColor"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:gravity="top">
+
+                            <TextView
+                                android:id="@+id/tabDotRentalTool"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="top"
+                                android:text="\u00B7"
+                                android:textColor="#ff0000"
+                                android:textSize="41dp"
+                                android:textStyle="bold"
+                                android:visibility="invisible" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </LinearLayout>
+
+                    <!--     <Button
+                             android:id="@+id/button_maintenance_reqs"
+                             android:layout_width="0dp"
+                             android:layout_height="wrap_content"
+                             android:layout_margin="1dp"
+                             android:layout_weight="1"
+                             android:background="@color/colorPrimary"
+                             android:padding="@dimen/button_padding"
+                             android:text="Maint Requests"
+                             android:textColor="@color/buttonTextColor" />-->
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+
+                    <!-- <Button
+                         android:id="@+id/button_health"
+                         android:layout_width="0dp"
+                         android:layout_height="wrap_content"
+                         android:layout_margin="1dp"
+                         android:layout_weight="1"
+                         android:background="@color/colorPrimary"
+                         android:maxLines="2"
+                         android:minLines="1"
+                         android:padding="@dimen/button_padding"
+                         android:text="Health &amp; Wellness"
+                         android:textColor="@color/buttonTextColor" />-->
+
+                    <!--<LinearLayout
+                        android:id="@+id/ll_insurance"
+                        android:layout_width="@dimen/space_0"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorAccent"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="11dp">
+
+                        <TextView
+                            style="@style/TextAppearance.AppCompat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:ellipsize="marquee"
+                            android:layout_marginStart="11dp"
+                            android:gravity="center"
+                            android:singleLine="false"
+                            android:text="Renters \nInsurance "
+                            android:textAllCaps="true"
+                            android:textColor="@color/buttonTextColor"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:gravity="top">
+
+                            <TextView
+                                android:id="@+id/tabDotInsurance"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="top"
+                                android:text="\u00B7"
+                                android:textColor="#ff0000"
+                                android:textSize="41dp"
+                                android:textStyle="bold"
+                                android:visibility="invisible" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+                    </LinearLayout>-->
+
+                    <!-- <Button
+                         android:id="@+id/button_insurance"
+                         android:layout_width="0dp"
+                         android:layout_height="wrap_content"
+                         android:layout_margin="1dp"
+                         android:layout_weight="1"
+                         android:background="@color/colorAccent"
+                         android:maxLines="2"
+                         android:minLines="1"
+                         android:padding="@dimen/button_padding"
+                         android:text="Renters Insurance"
+                         android:textColor="@color/buttonTextColor" />-->
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:id="@+id/ll_health"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorAccent"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="11dp">
+
+                        <TextView
+                            style="@style/TextAppearance.AppCompat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="11dp"
+                            android:gravity="center"
+                            android:text="Health &amp; \nWellness "
+                            android:textAllCaps="true"
+                            android:textColor="@color/buttonTextColor"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:gravity="top">
+
+                            <TextView
+                                android:id="@+id/tabDotHealth"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="top"
+                                android:text="\u00B7"
+                                android:textColor="#ff0000"
+                                android:textSize="41dp"
+                                android:textStyle="bold"
+                                android:visibility="invisible" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_cmn_notifications"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorAccent"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="11dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            style="@style/TextAppearance.AppCompat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="11dp"
+                            android:gravity="center"
+                            android:text="Community \nNotifications "
+                            android:textAllCaps="true"
+                            android:textColor="@color/buttonTextColor"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:gravity="top">
+
+                            <TextView
+                                android:id="@+id/tabDotCmnNotification"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="top"
+                                android:text="\u00B7"
+                                android:textColor="#ff0000"
+                                android:textSize="41dp"
+                                android:textStyle="bold"
+                                android:visibility="invisible" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_chat2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorAccent"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="11dp"
+                        android:visibility="gone">
+
+                        <TextView
+                            style="@style/TextAppearance.AppCompat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="11dp"
+                            android:gravity="center"
+                            android:text="General Chat "
+                            android:textAllCaps="true"
+                            android:textColor="@color/buttonTextColor"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:gravity="top">
+
+                            <TextView
+                                android:id="@+id/tabDotChat2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="top"
+                                android:text="\u00B7"
+                                android:textColor="#ff0000"
+                                android:textSize="41dp"
+                                android:textStyle="bold"
+                                android:visibility="invisible" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_voice_mail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="11dp">
+
+                        <TextView
+                            style="@style/TextAppearance.AppCompat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="11dp"
+                            android:gravity="center"
+                            android:text="VOICE MAIL "
+                            android:textAllCaps="true"
+                            android:textColor="@color/buttonTextColor"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:gravity="top">
+
+                            <TextView
+                                android:id="@+id/tabDotVoiceMail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="top"
+                                android:text="\u00B7"
+                                android:textColor="#ff0000"
+                                android:textSize="41dp"
+                                android:textStyle="bold"
+                                android:visibility="invisible" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:id="@+id/ll_bill_board"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="11dp">
+
+                        <TextView
+                            style="@style/TextAppearance.AppCompat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="11dp"
+                            android:gravity="center"
+                            android:text="Bulletin \nBoard "
+                            android:textAllCaps="true"
+                            android:textColor="@color/buttonTextColor"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:gravity="top">
+
+                            <TextView
+                                android:id="@+id/tabDotBillBoard"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="top"
+                                android:text="\u00B7"
+                                android:textColor="#ff0000"
+                                android:textSize="41dp"
+                                android:textStyle="bold"
+                                android:visibility="invisible" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_chat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="1dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorAccent"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="11dp">
+
+                        <TextView
+                            style="@style/TextAppearance.AppCompat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="11dp"
+                            android:gravity="center"
+                            android:text="General Chat "
+                            android:textAllCaps="true"
+                            android:textColor="@color/buttonTextColor"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:gravity="top">
+
+                            <TextView
+                                android:id="@+id/tabDotChat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="top"
+                                android:text="\u00B7"
+                                android:textColor="#ff0000"
+                                android:textSize="41dp"
+                                android:textStyle="bold"
+                                android:visibility="invisible" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/ll_survay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="1dp"
+                    android:layout_weight="2"
+                    android:background="@color/colorPrimaryDark"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="11dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/TextAppearance.AppCompat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="11dp"
+                        android:gravity="center"
+                        android:text="Survey "
+                        android:textAllCaps="true"
+                        android:textColor="@color/buttonTextColor"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:gravity="top">
+
+                        <TextView
+                            android:id="@+id/tabDotSurvay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="top"
+                            android:text="\u00B7"
+                            android:textColor="#ff0000"
+                            android:textSize="41dp"
+                            android:textStyle="bold"
+                            android:visibility="invisible" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llSecoundary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/ll_access_points2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="1dp"
+                    android:layout_weight="2"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="11dp">
+
+                    <TextView
+                        style="@style/TextAppearance.AppCompat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="11dp"
+                        android:gravity="center"
+                        android:text="Access Points "
+                        android:textAllCaps="true"
+                        android:textColor="@color/buttonTextColor"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:gravity="top">
+
+                        <TextView
+                            android:id="@+id/tabDotAccesspoint2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="top"
+                            android:text="\u00B7"
+                            android:textColor="#ff0000"
+                            android:textSize="41dp"
+                            android:textStyle="bold"
+                            android:visibility="invisible" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:id="@+id/ll_coupons_2"
+                        android:layout_width="@dimen/space_0"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="1dp"
+                        android:layout_weight="2"
+                        android:background="@color/colorAccent"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="11dp">
+
+                        <TextView
+                            style="@style/TextAppearance.AppCompat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="11dp"
+                            android:gravity="center"
+                            android:text="Coupons "
+                            android:textAllCaps="true"
+                            android:textColor="@color/buttonTextColor"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:gravity="top">
+
+                            <TextView
+                                android:id="@+id/tabDotCoupons_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="top"
+                                android:text="\u00B7"
+                                android:textColor="#ff0000"
+                                android:textSize="41dp"
+                                android:textStyle="bold"
+                                android:visibility="invisible" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </LinearLayout>
+
+                    <!-- <Button
+                         android:id="@+id/button_coupons_2"
+                         android:layout_width="0dp"
+                         android:layout_height="wrap_content"
+                         android:layout_margin="1dp"
+                         android:layout_weight="2"
+                         android:background="@color/colorPrimary"
+                         android:padding="@dimen/button_padding"
+                         android:text="Coupons"
+                         android:textColor="@color/buttonTextColor" />-->
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:id="@+id/ll_digital_key_2"
+                        android:layout_width="@dimen/space_0"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="1dp"
+                        android:layout_weight="2"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="11dp">
+
+                        <TextView
+                            style="@style/TextAppearance.AppCompat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="11dp"
+                            android:gravity="center"
+                            android:text="Digital Key "
+                            android:textAllCaps="true"
+                            android:textColor="@color/buttonTextColor"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:gravity="top">
+
+                            <TextView
+                                android:id="@+id/tabDotDigitalKey_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="top"
+                                android:text="\u00B7"
+                                android:textColor="#ff0000"
+                                android:textSize="41dp"
+                                android:textStyle="bold"
+                                android:visibility="invisible" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </LinearLayout>
+                </LinearLayout>
+                <!-- <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="horizontal"
+                     android:weightSum="2">
+
+
+                     <Button
+                         android:id="@+id/button_digital_key_2"
+                         android:layout_width="0dp"
+                         android:layout_height="wrap_content"
+                         android:layout_margin="1dp"
+                         android:layout_weight="2"
+                         android:background="@color/colorAccent"
+                         android:padding="@dimen/button_padding"
+                         android:text="Digital Key"
+                         android:textColor="@color/buttonTextColor" />
+
+
+                 </LinearLayout>-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_notification_2"
+                        android:layout_width="@dimen/space_0"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="1dp"
+                        android:layout_weight="2"
+                        android:background="@color/colorAccent"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="11dp">
+
+                        <TextView
+                            android:id="@+id/button_notifications_2"
+                            style="@style/TextAppearance.AppCompat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="11dp"
+                            android:gravity="center"
+                            android:text="Notifications "
+                            android:textAllCaps="true"
+                            android:textColor="@color/buttonTextColor"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:gravity="top">
+
+                            <TextView
+                                android:id="@+id/tabDotNotification_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="top"
+                                android:text="\u00B7"
+                                android:textColor="#ff0000"
+                                android:textSize="42dp"
+                                android:textStyle="bold"
+                                android:visibility="invisible" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <!--<TextView
+                            android:id="@+id/tvCount_2"
+                            style="@style/TextAppearance.AppCompat.Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="2dp"
+                            android:background="@drawable/layout_bg_round_white"
+                            android:gravity="center"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:visibility="gone"
+                            tools:text="20" />-->
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:gravity="top"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:id="@+id/ll_health_2"
+                        android:layout_width="@dimen/space_0"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="1dp"
+                        android:layout_weight="2"
+                        android:background="@color/colorPrimary"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="11dp">
+
+                        <TextView
+                            style="@style/TextAppearance.AppCompat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="11dp"
+                            android:gravity="center"
+                            android:text="Health &amp; Wellness "
+                            android:textAllCaps="true"
+                            android:textColor="@color/buttonTextColor"
+                            android:textStyle="bold" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:gravity="top">
+
+                            <TextView
+                                android:id="@+id/tabDotHealth_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="10dp"
+                                android:gravity="top"
+                                android:text="\u00B7"
+                                android:textColor="#ff0000"
+                                android:textSize="41dp"
+                                android:textStyle="bold"
+                                android:visibility="invisible" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    tools:context=".activities.PostDetailsActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/appbar_padding_top"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvToolBarTitle"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:gravity="start"
+                android:textColor="@android:color/white"
+                android:textSize="21sp"
+                android:textStyle="normal"
+                tools:text="Test" />
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#FAFAFA"
+                android:gravity="center"
+                android:weightSum="1">
+
+                <com.rd.PageIndicatorView
+                    android:id="@+id/dots_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:visibility="gone"
+                    app:piv_animationType="worm"
+                    app:piv_dynamicCount="true"
+                    app:piv_interactiveAnimation="true"
+                    app:piv_padding="4dp"
+                    app:piv_radius="4dp"
+                    app:piv_selectedColor="@color/colorPrimary"
+                    app:piv_unselectedColor="@color/gray_8F8F8F"
+                    app:piv_viewPager="@id/viewPager" />
+            </LinearLayout>
+
+
+            <!--<com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+                android:id="@+id/dots_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
+                app:dotsColor="@color/gray_8F8F8F"
+                app:dotsCornerRadius="8dp"
+                app:dotsSize="8dp"
+                app:dotsSpacing="2dp"
+                app:dotsWidthFactor="1.5"
+                app:progressMode="false"
+                app:selectedDotColor="@color/colorPrimary" />-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvServiceTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1"
+                    android:ellipsize="marquee"
+                    android:maxLines="2"
+                    android:textColor="@color/black_272727"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    tools:text="Magic Duster Cleaning Services" />
+
+                <ImageView
+                    android:id="@+id/imgFavorite"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="top"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_unfavorite"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imgEdit"
+                    app:layout_constraintTop_toTopOf="@id/llPostImage" />
+            </LinearLayout>
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvServiceDateTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:ellipsize="marquee"
+                android:maxLines="2"
+                android:textColor="@color/black_272727"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                tools:text="Tuesday, March 28, 2017 10:50 AM to 10:50 AM" />
+
+            <LinearLayout
+                android:id="@+id/llProductCondition"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="9dp"
+                android:background="@drawable/layout_bg_post_condition"
+                android:gravity="center"
+                android:minWidth="100dp"
+                android:visibility="visible"
+                app:layout_constraintStart_toEndOf="@id/llPostImage"
+                app:layout_constraintTop_toBottomOf="@id/tvPostTitle">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvProductCondition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/blue_013B97"
+                    android:textSize="14sp"
+                    android:textStyle="normal"
+                    tools:text="Good" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginEnd="12dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvProductServicePrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="19sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/llPostImage"
+                    app:layout_constraintTop_toBottomOf="@id/tvPostDate"
+                    tools:text="49,000 INR" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvPerSerice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:alpha="0.5"
+                    android:maxLines="1"
+                    android:text="per service"
+                    android:textColor="@color/black_272727"
+                    android:textStyle="normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tvProductServicePrice"
+                    app:layout_constraintTop_toBottomOf="@id/tvPostDate" />
+
+            </LinearLayout>
+
+
+            <com.borjabravo.readmoretextview.ReadMoreTextView
+                android:id="@+id/tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="12dp"
+                android:ellipsize="marquee"
+                android:textColor="@color/black_838383"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                app:trimLines="10"
+                tools:text="Tuesday, March 28, 2017 10:50 AM to 10:50 AM Tuesday, March 28, 2017 10:50 AM to 10:50 AM Tuesday, March 28, 2017 10:50 AM to 10:50 AM Tuesday, March 28, 2017 10:50 AM to 10:50 AM Tuesday, March 28, 2017 10:50 AM to 10:50 AM Tuesday, March 28, 2017 10:50 AM to 10:50 AM Tuesday, March 28, 2017 10:50 AM to 10:50 AM Tuesday, March 28, 2017 10:50 AM to 10:50 AM Tuesday, March 28, 2017 10:50 AM to 10:50 AM Tuesday, March 28, 2017 10:50 AM to 10:50 AM" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.6dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="12dp"
+                android:alpha="0.3"
+                android:background="@android:color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/clInside" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="12dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvContactInformationText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:ellipsize="marquee"
+                    android:maxLines="2"
+                    android:text="Contact Information"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvContactName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:ellipsize="marquee"
+                    android:maxLines="2"
+                    android:text="Thomas Moss"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvContactMobileNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="12dp"
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                android:textAlignment="viewEnd"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                tools:text="+91 123 4567890" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvContactEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="12dp"
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                android:textAlignment="viewEnd"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                tools:text="testsoft@testing.com" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvCloseSoldOut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/squarebutton_red"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                tools:text="Close" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

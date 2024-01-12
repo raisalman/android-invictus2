@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="net.invictusmanagement.invictuslifestyle">
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="false" />
+
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission
+        android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="31"
+        tools:replace="android:maxSdkVersion" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="31"
+        tools:replace="android:maxSdkVersion" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_SCAN"
+        android:usesPermissionFlags="neverForLocation"
+        tools:targetApi="s" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.bluetooth"
+        android:required="false" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher_original"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_secrity_config"
+        android:requestLegacyExternalStorage="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:icon,android:allowBackup">
+        <activity
+            android:name=".activities.AmenitiesActivity"
+            android:label="Amenities"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.AmenitiesBookingActivity"
+            android:label="Amenities Booking Request"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.ChooseSurveyActivity"
+            android:label="Choose survey"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.SurvayActivity"
+            android:label="Questions and Answers"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.GeneralChatActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.FernishActivity"
+            android:label="Fernish"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.RentalInsuranceActivity"
+            android:label="Rental Insurance"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.RentalPaymentActivity"
+            android:label="Rental Payment"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.WebViewActivity"
+            android:label="Rental Payment"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.RentalSetAutoPayActivity"
+            android:label="Setup AutoPay"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.MaintenanceRequestActivity"
+            android:label="Maintenance Request"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.AmenitiesCalenderActivity"
+            android:label="@string/title_activity_new_amenities"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.AmenitiesBookingCalenderActivity"
+            android:label="@string/title_activity_new_amenities"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.SingleVideoImageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.EENVideoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.GuestDigitalKeyMapActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.MediaCenterActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.GuestSignupActivity"
+            android:label="Guest Signup"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.GuestLoginActivity"
+            android:label="@string/title_guest_activity_login"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.ImageActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.SellDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.PostDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.SellActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.ServiceActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.ChoosePostActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.FavouriteRedeemActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.RedeemActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.HealthPlayerActivity"
+            android:configChanges="orientation|screenSize"
+            android:parentActivityName=".activities.TabbedActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/SplashTheme">
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <data
+                    android:host="accesspoint"
+                    android:pathPrefix="/open"
+                    android:scheme="invictus" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".activities.VerifyOTPActivity"
+            android:label="Verify One Time Password"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.TabbedActivity"
+            android:label="@string/title_activity_tabbed"
+            android:launchMode="singleTop"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.ChatActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_chat"
+            android:showOnLockScreen="true" />
+        <activity
+            android:name=".activities.PlayerActivity"
+            android:configChanges="orientation|keyboardHidden|screenLayout|screenSize"
+            android:label="Voice Mail" />
+        <activity
+            android:name=".activities.NewDigitalKeyActivity"
+            android:label="@string/title_activity_new_ditigal_key"
+            android:parentActivityName=".activities.TabbedActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.NewServiceKeyActivity"
+            android:label="@string/title_activity_new_service_key"
+            android:parentActivityName=".activities.TabbedActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.NewMaintenanceRequestActivity"
+            android:label="@string/title_activity_new_maintenance_request"
+            android:parentActivityName=".activities.TabbedActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.NewFeedbackActivity"
+            android:label="@string/title_activity_new_feedback"
+            android:parentActivityName=".activities.TabbedActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.BusinessesActivity"
+            android:label="@string/title_activity_businesses"
+            android:launchMode="singleTop"
+            android:parentActivityName=".activities.TabbedActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.PromotionsActivity"
+            android:label="@string/title_activity_promotions"
+            android:parentActivityName=".activities.BusinessesActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:label="@string/title_activity_profile"
+            android:parentActivityName=".activities.TabbedActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.PaymentHistoryActivity"
+            android:label="Payment History"
+            android:parentActivityName=".activities.TabbedActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.CategoryBillBoardActivity"
+            android:label="Select Category"
+            android:parentActivityName=".activities.TabbedActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.EENVideoListActivity"
+            android:label="Peek"
+            android:parentActivityName=".activities.TabbedActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.PendingChatRequestListActivity"
+            android:label="Pending Chat Requests"
+            android:parentActivityName=".activities.TabbedActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.RecentTopicListActivity"
+            android:label="Topics"
+            android:parentActivityName=".activities.TabbedActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.NewChatTopicActivity"
+            android:label="Topics"
+            android:parentActivityName=".activities.TabbedActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.NewDigitalKeyTabActivity"
+            android:label="Create New Digital Key"
+            android:parentActivityName=".activities.TabbedActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.NewCommunityNotificationActivity"
+            android:label="New Community Notification"
+            android:parentActivityName=".activities.TabbedActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".activities.UserSelectionActivity"
+            android:label="Select Recipients"
+            android:parentActivityName=".activities.TabbedActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".activities.VendorSelectionActivity"
+            android:label="Select Vendor"
+            android:parentActivityName=".activities.TabbedActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+
+        <activity
+            android:name=".activities.TechnicianSelectionActivity"
+            android:label="Select Technician"
+            android:parentActivityName=".activities.TabbedActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.NotificationReadUnread"
+            android:exported="false"
+            android:label="Recipient List"
+            android:parentActivityName=".activities.TabbedActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <receiver
+            android:name=".widgets.NewWidgetActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_accesspoints" />
+        </receiver>
+
+        <service
+            android:name=".service.NotificationService"
+            android:exported="false" />
+
+        <service
+            android:name=".service.FirebaseService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".service.ChatRegistrationIntentService"
+            android:exported="false" />
+        <service
+            android:name=".service.NotificationSoundService"
+            android:exported="false" />
+        <!--        stop service on app kill add-->
+        <!--        android:stopWithTask="true"-->
+        <service
+            android:name=".service.MyJobIntentService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="net.hockeyapp.android.appIdentifier"
+            android:value="${HOCKEYAPP_APP_ID}" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <service
+            android:name="com.openpath.mobileaccesscore.OpenpathForegroundService"
+            android:exported="false"
+            android:foregroundServiceType="location" />
+
+        <receiver
+            android:name="com.openpath.mobileaccesscore.OpenpathBroadcastReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.net.invictusmanagement.invictuslifestyle" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.openpath.mobileaccesscore.OpenpathAlarmReceiver"
+            android:exported="false"
+            android:process=":remote" />
+
+        <service
+            android:name="com.openpath.mobileaccesscore.OpenpathApduService"
+            android:exported="true"
+            android:permission="android.permission.BIND_NFC_SERVICE">
+            <intent-filter>
+                <action android:name="android.nfc.cardemulation.action.HOST_APDU_SERVICE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.nfc.cardemulation.host_apdu_service"
+                android:resource="@xml/apduservice" />
+        </service>
+    </application>
+
+</manifest>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlMain"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:id="@+id/llDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="false"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:paddingLeft="8dp"
+        android:paddingTop="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/tvChangeDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/black_272727"
+            android:textSize="12sp"
+            tools:text='15/06/2021' />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/llDate">
+
+        <LinearLayout
+            android:id="@+id/linearLayoutPicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/bordered_message_other"
+            android:maxWidth="180dp"
+            android:minWidth="120dp"
+            android:orientation="vertical"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="8dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/imgSent"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@color/black_272727" />
+
+            <ImageView
+                android:id="@+id/imgMessageStatusImage"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_gravity="bottom|left"
+                android:src="@drawable/ic_unread_message"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/bordered_message_other"
+            android:maxWidth="160dp"
+            android:minWidth="120dp"
+            android:orientation="vertical"
+            android:paddingLeft="8dp"
+            android:paddingTop="2dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="8dp"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/txtMessageOwner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxWidth="160dp"
+                android:minWidth="120dp"
+                android:text="User"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp" />
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+               <TextView
+                   android:id="@+id/txtMessageContent"
+                   android:layout_width="@dimen/space_0"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:maxWidth="160dp"
+                   android:minWidth="120dp"
+                   android:singleLine="false"
+                   android:text="Content Content Content Content Content Content Content"
+                   android:textAlignment="textEnd"
+                   android:textColor="#555"
+                   android:textSize="16sp" />
+               <ImageView
+                   android:id="@+id/imgMessageStatus"
+                   android:layout_width="12dp"
+                   android:layout_height="12dp"
+                   android:layout_gravity="bottom"
+                   android:src="@drawable/ic_read_message"
+                   android:visibility="gone" />
+
+           </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/llMain"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="8dp">
+
+        <TextView
+            android:id="@+id/tvTimeStamp"
+            style="@style/TextAppearance.AppCompat.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:alpha="0.5"
+            android:textColor="@color/black_272727"
+            android:textStyle="italic"
+            tools:text="11:45 am" />
+    </LinearLayout>
+
+
+</RelativeLayout>

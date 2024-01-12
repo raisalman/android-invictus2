@@ -1,0 +1,66 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/pref_category_profile">
+
+        <EditTextPreference
+            android:enabled="false"
+            android:key="displayName"
+            android:title="@string/pref_displayName" />
+
+        <EditTextPreference
+            android:enabled="false"
+            android:inputType="textEmailAddress"
+            android:key="email"
+            android:title="@string/pref_email" />
+
+        <EditTextPreference
+            android:enabled="false"
+            android:inputType="phone"
+            android:key="phone"
+            android:title="@string/pref_phone" />
+
+        <EditTextPreference
+            android:enabled="false"
+            android:key="locationName"
+            android:title="@string/pref_locationName" />
+
+        <EditTextPreference
+            android:enabled="false"
+            android:key="leaseRenewalDateUtc"
+            android:title="@string/pref_leaseRenewalDateUtc" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:enabled="false"
+            android:key="dnd_switch"
+            android:summary="@string/pref_do_not_disturb_description"
+            android:title="@string/pref_do_not_disturb" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:enabled="true"
+            android:key="haptic_switch"
+            android:summary="@string/pref_haptic_vibration_description"
+            android:title="@string/pref_haptic_vibration" />
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:enabled="true"
+            android:key="notification_switch"
+            android:summary="@string/pref_silent_notification_description"
+            android:title="@string/pref_silent_notification" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/pref_category_chat">
+
+        <RingtonePreference
+            android:defaultValue="content://settings/system/notification_sound"
+            android:key="chat_ringtone"
+            android:ringtoneType="ringtone"
+            android:title="@string/pref_ringtone" />
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>
