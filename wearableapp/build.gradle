@@ -47,7 +47,7 @@ android {
             dimension "version"
             buildConfigField "String", "HubListenConnectionString", '"Endpoint=sb://invictusdev.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=5r9ygxc8RUOgJ+olDBw3ogAM3+hKWpPYv3vZl5YCESI="'
             buildConfigField "String", "MsgHubListenConnectionString", '"Endpoint=sb://invictusdev.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=D8V3OLIiq7wWANXUHoQynHrmup+4YURBkYKrO93e/vY="'
-            buildConfigField "String", "_baseUrl", '"https://192.168.1.16:44345/api/v1/"'
+            buildConfigField "String", "_baseUrl", '"https://dc49-182-188-100-221.ngrok-free.app/api/v1/"'
             buildConfigField "String", "_chatHubBaseUrl", '"https://mobilechatdev.invictusmanagement.net/chathub"'
             buildConfigField "String", "APP_NAME", '"Invictus Lifestyle"'
             buildConfigField "String", "HubName", ' "msghub"'

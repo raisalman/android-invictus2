@@ -80,7 +80,7 @@ public class GuestAccessPointsFragment extends Fragment implements IRefreshableF
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_accesspoints_list, container, false);
-        initBrivoInstance();
+//        initBrivoInstance();
         if (view instanceof SwipeRefreshLayout) {
             _feedback = view.findViewById(R.id.feedback);
             _tvAll = view.findViewById(R.id.tvAll);
@@ -104,6 +104,14 @@ public class GuestAccessPointsFragment extends Fragment implements IRefreshableF
             refresh();
         }
         return view;
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            initBrivoInstance();
+        }
     }
 
     private void callAPIForGetAccessCode() {

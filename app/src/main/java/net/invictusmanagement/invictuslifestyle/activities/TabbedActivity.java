@@ -2427,7 +2427,7 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
         });
     }
 
-    private void unlockAccessPoint(AccessPoint item, int position) {
+    private void unlockAccessPoint(AccessPoint item, int position ) {
         String accessPointId = String.valueOf(item.id);
         new AsyncTask<AccessPoint, Void, Boolean>() {
 

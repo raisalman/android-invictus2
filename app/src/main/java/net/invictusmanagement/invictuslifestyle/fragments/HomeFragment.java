@@ -533,10 +533,10 @@ public class HomeFragment extends Fragment implements IRefreshableFragment {
             if (role.equals(getString(R.string.role_leasing_officer))
                     || role.equals(getString(R.string.role_property_manager))) {
                 llServiceKey.setVisibility(View.VISIBLE);
-                llBrivoDevices.setVisibility(View.GONE);
+//                llBrivoDevices.setVisibility(View.GONE);
             } else {
                 llServiceKey.setVisibility(View.GONE);
-                llBrivoDevices.setVisibility(View.GONE);
+//                llBrivoDevices.setVisibility(View.GONE);
             }
 
             if (sharedPreferences.getBoolean("allowGeneralChat", true)) {

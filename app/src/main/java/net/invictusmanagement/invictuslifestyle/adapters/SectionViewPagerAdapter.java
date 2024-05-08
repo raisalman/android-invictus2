@@ -70,7 +70,7 @@ public class SectionViewPagerAdapter extends FragmentStateAdapter {
     private final String[] vendorTabs = {
             Utilities.FRAGMENT_HOME,
             Utilities.FRAGMENT_ACCESS_POINTS,
-//            Utilities.FRAGMENT_BRIVO_DEVICES,
+            Utilities.FRAGMENT_BRIVO_DEVICES,
             Utilities.FRAGMENT_PROMOTIONS,
             Utilities.FRAGMENT_DIGITAL_KEYS,
             Utilities.FRAGMENT_NOTIFICATIONS,
@@ -88,7 +88,7 @@ public class SectionViewPagerAdapter extends FragmentStateAdapter {
     private final String[] residentTabs = {
             Utilities.FRAGMENT_HOME,
             Utilities.FRAGMENT_ACCESS_POINTS,
-//            Utilities.FRAGMENT_BRIVO_DEVICES,
+            Utilities.FRAGMENT_BRIVO_DEVICES,
             Utilities.FRAGMENT_PROMOTIONS,
             Utilities.FRAGMENT_DIGITAL_KEYS,
             Utilities.FRAGMENT_NOTIFICATIONS,
@@ -104,7 +104,7 @@ public class SectionViewPagerAdapter extends FragmentStateAdapter {
     private final String[] adminTabs = {
             Utilities.FRAGMENT_HOME,
             Utilities.FRAGMENT_ACCESS_POINTS,
-//            Utilities.FRAGMENT_BRIVO_DEVICES,
+            Utilities.FRAGMENT_BRIVO_DEVICES,
             Utilities.FRAGMENT_SERVICE_KEYS,
             Utilities.FRAGMENT_PROMOTIONS,
             Utilities.FRAGMENT_DIGITAL_KEYS,
@@ -123,7 +123,7 @@ public class SectionViewPagerAdapter extends FragmentStateAdapter {
     private final String[] facilityTabs = {
             Utilities.FRAGMENT_HOME,
             Utilities.FRAGMENT_ACCESS_POINTS,
-//            Utilities.FRAGMENT_BRIVO_DEVICES,
+            Utilities.FRAGMENT_BRIVO_DEVICES,
             Utilities.FRAGMENT_SERVICE_KEYS,
             Utilities.FRAGMENT_PROMOTIONS,
             Utilities.FRAGMENT_NOTIFICATIONS,
@@ -157,56 +157,56 @@ public class SectionViewPagerAdapter extends FragmentStateAdapter {
         if (role.equals(context.getString(R.string.role_vendor))) {
             FRAGMENT_POSITION_HOME = 0;
             FRAGMENT_POSITION_ACCESS_POINTS = 1;
-//            FRAGMENT_POSITION_BRIVO_DEVICES = 2;
-//            FRAGMENT_POSITION_PROMOTIONS = 3;
-//            FRAGMENT_POSITION_DIGITAL_KEYS = 4;
-//            FRAGMENT_POSITION_NOTIFICATIONS = 5;
-//            FRAGMENT_POSITION_RENTAL_TOOL = 6;
-//            FRAGMENT_POSITION_HEALTH = 7;
-//            FRAGMENT_POSITION_CHAT = 8;
+            FRAGMENT_POSITION_BRIVO_DEVICES = 2;
+            FRAGMENT_POSITION_PROMOTIONS = 3;
+            FRAGMENT_POSITION_DIGITAL_KEYS = 4;
+            FRAGMENT_POSITION_NOTIFICATIONS = 5;
+            FRAGMENT_POSITION_RENTAL_TOOL = 6;
+            FRAGMENT_POSITION_HEALTH = 7;
+            FRAGMENT_POSITION_CHAT = 8;
 
-            FRAGMENT_POSITION_PROMOTIONS = 2;
-            FRAGMENT_POSITION_DIGITAL_KEYS = 3;
-            FRAGMENT_POSITION_NOTIFICATIONS = 4;
-            FRAGMENT_POSITION_RENTAL_TOOL = 5;
-            FRAGMENT_POSITION_HEALTH = 6;
-            FRAGMENT_POSITION_CHAT = 7;
+//            FRAGMENT_POSITION_PROMOTIONS = 2;
+//            FRAGMENT_POSITION_DIGITAL_KEYS = 3;
+//            FRAGMENT_POSITION_NOTIFICATIONS = 4;
+//            FRAGMENT_POSITION_RENTAL_TOOL = 5;
+//            FRAGMENT_POSITION_HEALTH = 6;
+//            FRAGMENT_POSITION_CHAT = 7;
         } else if (role.equals(context.getString(R.string.role_facility))) {
             FRAGMENT_POSITION_HOME = 0;
             FRAGMENT_POSITION_ACCESS_POINTS = 1;
-//            FRAGMENT_POSITION_BRIVO_DEVICES = 2;
-//            FRAGMENT_POSITION_SERVICE_KEYS = 3;
-//            FRAGMENT_POSITION_PROMOTIONS = 4;
-//            FRAGMENT_POSITION_NOTIFICATIONS = 5;
-//            FRAGMENT_POSITION_RENTAL_TOOL = 6;
-//            FRAGMENT_POSITION_COMMUNITY_NOTIFICATIONS = 7;
-//            FRAGMENT_POSITION_CHAT = 8;
+            FRAGMENT_POSITION_BRIVO_DEVICES = 2;
+            FRAGMENT_POSITION_SERVICE_KEYS = 3;
+            FRAGMENT_POSITION_PROMOTIONS = 4;
+            FRAGMENT_POSITION_NOTIFICATIONS = 5;
+            FRAGMENT_POSITION_RENTAL_TOOL = 6;
+            FRAGMENT_POSITION_COMMUNITY_NOTIFICATIONS = 7;
+            FRAGMENT_POSITION_CHAT = 8;
 
-            FRAGMENT_POSITION_SERVICE_KEYS = 2;
-            FRAGMENT_POSITION_PROMOTIONS = 3;
-            FRAGMENT_POSITION_NOTIFICATIONS = 4;
-            FRAGMENT_POSITION_RENTAL_TOOL = 5;
-            FRAGMENT_POSITION_COMMUNITY_NOTIFICATIONS = 6;
-            FRAGMENT_POSITION_CHAT = 7;
+//            FRAGMENT_POSITION_SERVICE_KEYS = 2;
+//            FRAGMENT_POSITION_PROMOTIONS = 3;
+//            FRAGMENT_POSITION_NOTIFICATIONS = 4;
+//            FRAGMENT_POSITION_RENTAL_TOOL = 5;
+//            FRAGMENT_POSITION_COMMUNITY_NOTIFICATIONS = 6;
+//            FRAGMENT_POSITION_CHAT = 7;
         } else if (role.equals(context.getString(R.string.role_resident))) {
             FRAGMENT_POSITION_HOME = 0;
             FRAGMENT_POSITION_ACCESS_POINTS = 1;
-//            FRAGMENT_POSITION_BRIVO_DEVICES = 2;
-//            FRAGMENT_POSITION_PROMOTIONS = 3;
-//            FRAGMENT_POSITION_DIGITAL_KEYS = 4;
-//            FRAGMENT_POSITION_NOTIFICATIONS = 5;
-//            FRAGMENT_POSITION_RENTAL_TOOL = 6;
-//            FRAGMENT_POSITION_HEALTH = 7;
-//            FRAGMENT_POSITION_VOICE_MAIL = 8;
+            FRAGMENT_POSITION_BRIVO_DEVICES = 2;
+            FRAGMENT_POSITION_PROMOTIONS = 3;
+            FRAGMENT_POSITION_DIGITAL_KEYS = 4;
+            FRAGMENT_POSITION_NOTIFICATIONS = 5;
+            FRAGMENT_POSITION_RENTAL_TOOL = 6;
+            FRAGMENT_POSITION_HEALTH = 7;
+            FRAGMENT_POSITION_VOICE_MAIL = 8;
 
-            FRAGMENT_POSITION_PROMOTIONS = 2;
-            FRAGMENT_POSITION_DIGITAL_KEYS = 3;
-            FRAGMENT_POSITION_NOTIFICATIONS = 4;
-            FRAGMENT_POSITION_RENTAL_TOOL = 5;
-            FRAGMENT_POSITION_HEALTH = 6;
-            FRAGMENT_POSITION_VOICE_MAIL = 7;
+//            FRAGMENT_POSITION_PROMOTIONS = 2;
+//            FRAGMENT_POSITION_DIGITAL_KEYS = 3;
+//            FRAGMENT_POSITION_NOTIFICATIONS = 4;
+//            FRAGMENT_POSITION_RENTAL_TOOL = 5;
+//            FRAGMENT_POSITION_HEALTH = 6;
+//            FRAGMENT_POSITION_VOICE_MAIL = 7;
 
-            int position = 7; //last position
+            int position = 8; //last position
             if (sharedPreferences.getBoolean("allowBulletinBoard", true)) {
                 FRAGMENT_POSITION_BILLBOARD = position + 1;
                 position++;
@@ -220,24 +220,24 @@ public class SectionViewPagerAdapter extends FragmentStateAdapter {
                 role.equals(context.getString(R.string.role_leasing_officer))) {
             FRAGMENT_POSITION_HOME = 0;
             FRAGMENT_POSITION_ACCESS_POINTS = 1;
-//            FRAGMENT_POSITION_BRIVO_DEVICES = 2;
-//            FRAGMENT_POSITION_SERVICE_KEYS = 3;
-//            FRAGMENT_POSITION_PROMOTIONS = 4;
-//            FRAGMENT_POSITION_DIGITAL_KEYS = 5;
-//            FRAGMENT_POSITION_NOTIFICATIONS = 6;
-//            FRAGMENT_POSITION_RENTAL_TOOL = 7;
-//            FRAGMENT_POSITION_HEALTH = 8;
-//            FRAGMENT_POSITION_VOICE_MAIL = 9;
+            FRAGMENT_POSITION_BRIVO_DEVICES = 2;
+            FRAGMENT_POSITION_SERVICE_KEYS = 3;
+            FRAGMENT_POSITION_PROMOTIONS = 4;
+            FRAGMENT_POSITION_DIGITAL_KEYS = 5;
+            FRAGMENT_POSITION_NOTIFICATIONS = 6;
+            FRAGMENT_POSITION_RENTAL_TOOL = 7;
+            FRAGMENT_POSITION_HEALTH = 8;
+            FRAGMENT_POSITION_VOICE_MAIL = 9;
+//
+//            FRAGMENT_POSITION_SERVICE_KEYS = 2;
+//            FRAGMENT_POSITION_PROMOTIONS = 3;
+//            FRAGMENT_POSITION_DIGITAL_KEYS = 4;
+//            FRAGMENT_POSITION_NOTIFICATIONS = 5;
+//            FRAGMENT_POSITION_RENTAL_TOOL = 6;
+//            FRAGMENT_POSITION_HEALTH = 7;
+//            FRAGMENT_POSITION_VOICE_MAIL = 8;
 
-            FRAGMENT_POSITION_SERVICE_KEYS = 2;
-            FRAGMENT_POSITION_PROMOTIONS = 3;
-            FRAGMENT_POSITION_DIGITAL_KEYS = 4;
-            FRAGMENT_POSITION_NOTIFICATIONS = 5;
-            FRAGMENT_POSITION_RENTAL_TOOL = 6;
-            FRAGMENT_POSITION_HEALTH = 7;
-            FRAGMENT_POSITION_VOICE_MAIL = 8;
-
-            int position = 8; //last position
+            int position = 9; //last position
             if (sharedPreferences.getBoolean("allowBulletinBoard", true)) {
                 FRAGMENT_POSITION_BILLBOARD = position + 1;
                 position++;
@@ -250,16 +250,16 @@ public class SectionViewPagerAdapter extends FragmentStateAdapter {
         } else {
             FRAGMENT_POSITION_HOME = 0;
             FRAGMENT_POSITION_ACCESS_POINTS = 1;
-//            FRAGMENT_POSITION_BRIVO_DEVICES = 2;
-//            FRAGMENT_POSITION_PROMOTIONS = 3;
-//            FRAGMENT_POSITION_DIGITAL_KEYS = 4;
-//            FRAGMENT_POSITION_NOTIFICATIONS = 5;
-//            FRAGMENT_POSITION_HEALTH = 6;
+            FRAGMENT_POSITION_BRIVO_DEVICES = 2;
+            FRAGMENT_POSITION_PROMOTIONS = 3;
+            FRAGMENT_POSITION_DIGITAL_KEYS = 4;
+            FRAGMENT_POSITION_NOTIFICATIONS = 5;
+            FRAGMENT_POSITION_HEALTH = 6;
 
-            FRAGMENT_POSITION_PROMOTIONS = 2;
-            FRAGMENT_POSITION_DIGITAL_KEYS = 3;
-            FRAGMENT_POSITION_NOTIFICATIONS = 4;
-            FRAGMENT_POSITION_HEALTH = 5;
+//            FRAGMENT_POSITION_PROMOTIONS = 2;
+//            FRAGMENT_POSITION_DIGITAL_KEYS = 3;
+//            FRAGMENT_POSITION_NOTIFICATIONS = 4;
+//            FRAGMENT_POSITION_HEALTH = 5;
         }
 
     }
@@ -276,8 +276,8 @@ public class SectionViewPagerAdapter extends FragmentStateAdapter {
         if (role.equalsIgnoreCase(context.getString(R.string.role_vendor))) {
             if (position == FRAGMENT_POSITION_ACCESS_POINTS) {
                 return AccessPointsFragment.newInstance();
-            } /*else if (position == FRAGMENT_POSITION_BRIVO_DEVICES)
-                return BrivoDevicesFragment.newInstance();*/
+            } else if (position == FRAGMENT_POSITION_BRIVO_DEVICES)
+                return BrivoDevicesFragment.newInstance();
             else if (position == FRAGMENT_POSITION_PROMOTIONS)
                 return BusinessTypesFragment.newInstance();
             else if (position == FRAGMENT_POSITION_DIGITAL_KEYS)
@@ -294,9 +294,9 @@ public class SectionViewPagerAdapter extends FragmentStateAdapter {
 
             if (position == FRAGMENT_POSITION_ACCESS_POINTS) {
                 return AccessPointsFragment.newInstance();
-            } /*else if (position == FRAGMENT_POSITION_BRIVO_DEVICES) {
+            } else if (position == FRAGMENT_POSITION_BRIVO_DEVICES) {
                 return BrivoDevicesFragment.newInstance();
-            }*/ else if (position == FRAGMENT_POSITION_SERVICE_KEYS) {
+            } else if (position == FRAGMENT_POSITION_SERVICE_KEYS) {
                 return ServiceKeysFragment.newInstance();
             } else if (position == FRAGMENT_POSITION_PROMOTIONS) {
                 return BusinessTypesFragment.newInstance();
@@ -314,9 +314,9 @@ public class SectionViewPagerAdapter extends FragmentStateAdapter {
 
             if (position == FRAGMENT_POSITION_ACCESS_POINTS) {
                 return AccessPointMainFragment.newInstance();
-            } /*else if (position == FRAGMENT_POSITION_BRIVO_DEVICES) {
+            } else if (position == FRAGMENT_POSITION_BRIVO_DEVICES) {
                 return BrivoDevicesFragment.newInstance();
-            }*/ else if (position == FRAGMENT_POSITION_SERVICE_KEYS) {
+            }else if (position == FRAGMENT_POSITION_SERVICE_KEYS) {
                 return ServiceKeysFragment.newInstance();
             } else if (position == FRAGMENT_POSITION_PROMOTIONS) {
                 return BusinessTypesFragment.newInstance();
@@ -341,9 +341,9 @@ public class SectionViewPagerAdapter extends FragmentStateAdapter {
 
             if (position == FRAGMENT_POSITION_ACCESS_POINTS) {
                 return AccessPointMainFragment.newInstance();
-            } /*else if (position == FRAGMENT_POSITION_BRIVO_DEVICES) {
+            } else if (position == FRAGMENT_POSITION_BRIVO_DEVICES) {
                 return BrivoDevicesFragment.newInstance();
-            } */else if (position == FRAGMENT_POSITION_PROMOTIONS) {
+            } else if (position == FRAGMENT_POSITION_PROMOTIONS) {
                 return BusinessTypesFragment.newInstance();
             } else if (position == FRAGMENT_POSITION_DIGITAL_KEYS) {
                 return DigitalKeysFragment.newInstance();
@@ -365,9 +365,9 @@ public class SectionViewPagerAdapter extends FragmentStateAdapter {
         } else {
             if (position == FRAGMENT_POSITION_ACCESS_POINTS) {
                 return AccessPointsFragment.newInstance();
-            } /*else if (position == FRAGMENT_POSITION_BRIVO_DEVICES) {
+            } else if (position == FRAGMENT_POSITION_BRIVO_DEVICES) {
                 return BrivoDevicesFragment.newInstance();
-            } */else if (position == FRAGMENT_POSITION_PROMOTIONS) {
+            } else if (position == FRAGMENT_POSITION_PROMOTIONS) {
                 return BusinessTypesFragment.newInstance();
             } else if (position == FRAGMENT_POSITION_DIGITAL_KEYS) {
                 return GuestDigitalKeysFragment.newInstance();

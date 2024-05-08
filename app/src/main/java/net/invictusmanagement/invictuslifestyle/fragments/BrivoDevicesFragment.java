@@ -313,9 +313,10 @@ public class BrivoDevicesFragment extends Fragment implements IRefreshableFragme
             }
 
             @Override
-            public void onFailure(WSException wse) {
+            public void onFailure(WSException wse) { 
                 ProgressDialog.dismissProgress();
-                Toast.makeText(getContext(), "Something went wrong, Please try again later!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "Something went wrong, Please try again later!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), wse.getServerMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
