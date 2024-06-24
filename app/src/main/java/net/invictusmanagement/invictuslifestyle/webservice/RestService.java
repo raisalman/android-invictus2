@@ -312,22 +312,22 @@ public interface RestService {
 
     @Headers({"Content-Type: application/json "})
     @PUT("device/{id}/lock")
-    Call<ResponseBody> lockSmartHome(@Path("id") int id, @Header("Authorization") String token);
+    Call<ResponseBody> lockSmartHome(@Path("id") String id, @Header("Authorization") String token);
 
     @Headers({"Content-Type: application/json "})
     @PUT("device/{id}/unlock")
-    Call<ResponseBody> unlockSmartHome(@Path("id") int id, @Header("Authorization") String token);
+    Call<ResponseBody> unlockSmartHome(@Path("id") String id, @Header("Authorization") String token);
 
 
     @Headers({"Content-Type: application/json "})
     @PUT("device/{id}/on")
-    Call<ResponseBody> turnOnSmartHomeSwitch(@Path("id") int id, @Header("Authorization") String token);
+    Call<ResponseBody> turnOnSmartHomeSwitch(@Path("id") String id, @Header("Authorization") String token);
 
     @Headers({"Content-Type: application/json "})
     @PUT("device/{id}/off")
-    Call<ResponseBody> turnOffSmartHomeSwitch(@Path("id") int id, @Header("Authorization") String token);
+    Call<ResponseBody> turnOffSmartHomeSwitch(@Path("id") String id, @Header("Authorization") String token);
 
     @Headers({"Content-Type: application/json "})
     @PUT("device/{id}/settings")
-    Call<ResponseBody> setThermostatSetting(@Path("id") int id, @Header("Authorization") String token,@Body String data);
+    Call<ResponseBody> setThermostatSetting(@Path("id") String id, @Header("Authorization") String token,@Body String data);
 }

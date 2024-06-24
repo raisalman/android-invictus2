@@ -31,15 +31,15 @@ allprojects {
         }
         maven { url 'https://jitpack.io' }
         google()
-        maven {
-            url "https://maven.pkg.github.com/prodatakey/pdk-demo-app-android"
-            credentials {
-                username "taurusdev567"
-                password "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"
-//                username "dima11051994"
-//                password "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"
-            }
-        }
+//        maven {
+//            url "https://maven.pkg.github.com/prodatakey/pdk-demo-app-android"
+//            credentials {
+//                username "taurusdev567"
+//                password "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"
+////                username "dima11051994"
+////                password "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"
+//            }
+//        }
         mavenCentral()
 /*
         maven {

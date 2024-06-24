@@ -140,7 +140,7 @@ public class WebServiceBrivoSmarthHome {
         });
     }
 
-    public void lockSmartHomeDoor(int id, String token, RestCallBack<ResponseBody> callBack) {
+    public void lockSmartHomeDoor(String id, String token, RestCallBack<ResponseBody> callBack) {
         Log.e("Token >> ", token);
         Call<ResponseBody> call = restService.lockSmartHome(id, "Token " + token);
         call.enqueue(new Callback<ResponseBody>() {
@@ -158,7 +158,7 @@ public class WebServiceBrivoSmarthHome {
         });
     }
 
-    public void unlockSmartHomeDoor(int id, String token, RestCallBack<ResponseBody> callBack) {
+    public void unlockSmartHomeDoor(String id, String token, RestCallBack<ResponseBody> callBack) {
         Log.e("Token >> ", token);
         Call<ResponseBody> call = restService.unlockSmartHome(id, "Token " + token);
         call.enqueue(new Callback<ResponseBody>() {
@@ -176,7 +176,7 @@ public class WebServiceBrivoSmarthHome {
         });
     }
 
-    public void turnOnSmartHomeSwitch(int id, String token, RestCallBack<ResponseBody> callBack) {
+    public void turnOnSmartHomeSwitch(String id, String token, RestCallBack<ResponseBody> callBack) {
         Log.e("Token >> ", token);
         Call<ResponseBody> call = restService.turnOnSmartHomeSwitch(id, "Token " + token);
         call.enqueue(new Callback<ResponseBody>() {
@@ -194,7 +194,7 @@ public class WebServiceBrivoSmarthHome {
         });
     }
 
-    public void turnOffSmartHomeSwitch(int id, String token, RestCallBack<ResponseBody> callBack) {
+    public void turnOffSmartHomeSwitch(String id, String token, RestCallBack<ResponseBody> callBack) {
         Log.e("Token >> ", token);
         Call<ResponseBody> call = restService.turnOffSmartHomeSwitch(id, "Token " + token);
         call.enqueue(new Callback<ResponseBody>() {
@@ -213,7 +213,7 @@ public class WebServiceBrivoSmarthHome {
     }
 
 
-    public void setThermostatSetting(int id, String token, Settings settings, RestCallBack<ResponseBody> callBack) {
+    public void setThermostatSetting(String id, String token, Settings settings, RestCallBack<ResponseBody> callBack) {
         String json = new Gson().toJson(settings);
         Log.e("JSON >> ", json);
         Call<ResponseBody> call = restService.setThermostatSetting(id, "Token " + token, json);

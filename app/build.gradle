@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 34
     buildToolsVersion "26.0.3"
     defaultConfig {
         applicationId 'net.invictusmanagement.invictuslifestyle'
         minSdkVersion 26
-        targetSdkVersion 33
+        targetSdkVersion 34
         versionCode 49
         versionName "1.43"
         manifestPlaceholders = [HOCKEYAPP_APP_ID: "e5f277ae9b1b4806a2c43c0b728b6b7b"]
@@ -75,7 +75,7 @@ dependencies {
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.legacy:legacy-support-v13:1.0.0'
@@ -180,7 +180,7 @@ dependencies {
 //    wearApp project(':wearableapp')
 
     //PDK SDK
-    implementation "com.prodatakey.android:sdk:1.0.11"
+//    implementation "com.prodatakey.android:sdk:1.0.11"
 
     //crashlytics
     // Import the BoM for the Firebase platform

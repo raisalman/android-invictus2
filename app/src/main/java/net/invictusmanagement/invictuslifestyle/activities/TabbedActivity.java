@@ -47,6 +47,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
@@ -211,11 +212,11 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import io.pdk.pdkmobilesdkandroid.PDKLibrary;
+/*import io.pdk.pdkmobilesdkandroid.PDKLibrary;
 import io.pdk.pdkmobilesdkandroid.PDKLibraryRxWrapper;
 import io.pdk.pdkmobilesdkandroid.model.error.BluetoothException;
 import io.pdk.pdkmobilesdkandroid.model.error.DataSyncException;
-import io.reactivex.Single;
+import io.reactivex.Single;*/
 import okhttp3.ResponseBody;
 
 public class TabbedActivity extends BaseActivity implements AccessPointsListFragmentInteractionListener, NotificationsListFragmentInteractionListener, BrivoDevicesListFragmentInteractionListener, MaintenanceRequestsListFragmentInteractionListener, DigitalKeysListFragmentInteractionListener, ServiceKeysListFragmentInteractionListener, VoiceMailFragmentInteractionListener, HealthVideoListFragmentInteractionListener, MarketPostListFragmentInteractionListener, GuestDigitalKeysListFragmentInteractionListener, ShowSingleMRSItem, OpenpathMobileAccessCore.OpenpathEventHandler, DataClient.OnDataChangedListener, MessageClient.OnMessageReceivedListener, CapabilityClient.OnCapabilityChangedListener {
@@ -272,7 +273,7 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
     private AccessPointsFragment _accessPointFragment;
     private GuestAccessPointsFragment _guestAccessPointFragment;
     private boolean isAccessPointFailed = false;
-    private PDKLibraryRxWrapper sdk;
+//    private PDKLibraryRxWrapper sdk;
 
     public static void showNotificationDialog(String title, String body) {
 
@@ -436,12 +437,14 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
     }
 
     public boolean checkConnectionActive() {
-        if (hubConnection != null) return hubConnection.getConnectionState() == HubConnectionState.CONNECTED;
+        if (hubConnection != null)
+            return hubConnection.getConnectionState() == HubConnectionState.CONNECTED;
         else return false;
     }
 
     public boolean checkMobileHubConnectionActive() {
-        if (mobileHubConnection != null) return mobileHubConnection.getConnectionState() == HubConnectionState.CONNECTED;
+        if (mobileHubConnection != null)
+            return mobileHubConnection.getConnectionState() == HubConnectionState.CONNECTED;
         else return false;
     }
 
@@ -472,7 +475,8 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
             updateAppStatus.ApplicationUserId = ApplicationUserId;
             updateAppStatus.AppStatus = AppStatus;
             System.out.println("UpdateAppStatus: " + new Gson().toJson(updateAppStatus));
-            if (checkConnectionActive()) hubConnection.send("UpdateAppStatus", new Gson().toJson(updateAppStatus));
+            if (checkConnectionActive())
+                hubConnection.send("UpdateAppStatus", new Gson().toJson(updateAppStatus));
         }
     }
 
@@ -486,41 +490,48 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
             updateChatCount.IsAdmin = 0;
         }
         System.out.println("UpdateChatCount: " + new Gson().toJson(updateChatCount));
-        if (checkConnectionActive()) hubConnection.send("UpdateChatCount", new Gson().toJson(updateChatCount));
+        if (checkConnectionActive())
+            hubConnection.send("UpdateChatCount", new Gson().toJson(updateChatCount));
 
     }
 
     public void joinIndividualGroup(ChatInitiated updateTopicStatus) {
         System.out.println("JoinIndividualGroup: " + new Gson().toJson(updateTopicStatus));
-        if (checkConnectionActive()) hubConnection.send("JoinIndividualGroup", new Gson().toJson(updateTopicStatus));
+        if (checkConnectionActive())
+            hubConnection.send("JoinIndividualGroup", new Gson().toJson(updateTopicStatus));
     }
 
     public void updateTopicStatus(UpdateTopicStatus updateTopicStatus) {
         System.out.println("UpdateTopicStatus: " + new Gson().toJson(updateTopicStatus));
-        if (checkConnectionActive()) hubConnection.send("UpdateTopicStatus", new Gson().toJson(updateTopicStatus));
+        if (checkConnectionActive())
+            hubConnection.send("UpdateTopicStatus", new Gson().toJson(updateTopicStatus));
     }
 
     public void addNewTopicRequest(ChatNewTopicRequest chatNewTopicRequest) {
         System.out.println("ChatRequestToOfficer: " + new Gson().toJson(chatNewTopicRequest));
-        if (checkConnectionActive()) hubConnection.send("ChatRequestToOfficer", new Gson().toJson(chatNewTopicRequest));
+        if (checkConnectionActive())
+            hubConnection.send("ChatRequestToOfficer", new Gson().toJson(chatNewTopicRequest));
 
     }
 
     public void addNewAdminTopicRequest(ChatNewTopicRequest chatNewTopicRequest) {
         System.out.println("ChatRequestToResident: " + new Gson().toJson(chatNewTopicRequest));
-        if (checkConnectionActive()) hubConnection.send("ChatRequestToResident", new Gson().toJson(chatNewTopicRequest));
+        if (checkConnectionActive())
+            hubConnection.send("ChatRequestToResident", new Gson().toJson(chatNewTopicRequest));
 
     }
 
     public void sendMessageToGroup(GroupMassageSend groupMassageSend) {
         System.out.println("SendMessageToGroup: " + new Gson().toJson(groupMassageSend));
-        if (checkConnectionActive()) hubConnection.send("SendMessageToGroup", new Gson().toJson(groupMassageSend));
+        if (checkConnectionActive())
+            hubConnection.send("SendMessageToGroup", new Gson().toJson(groupMassageSend));
 
     }
 
     public void sendImageMessageToGroup(String groupMassageSend) {
         System.out.println("SendImageMessageToGroup: " + groupMassageSend);
-        if (checkConnectionActive()) hubConnection.send("SendImageMessageToGroup", groupMassageSend);
+        if (checkConnectionActive())
+            hubConnection.send("SendImageMessageToGroup", groupMassageSend);
 
     }
 
@@ -554,7 +565,8 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
 
         hubConnection.on("MessageShown", (message) -> {
             System.out.println("MessageShown: " + message);
-            if (Integer.parseInt(message) == GeneralChatActivity.generalChatActivity.chatRequestId) GeneralChatActivity.generalChatActivity.makeAllRead(message);
+            if (Integer.parseInt(message) == GeneralChatActivity.generalChatActivity.chatRequestId)
+                GeneralChatActivity.generalChatActivity.makeAllRead(message);
         }, String.class);
 
         hubConnection.on("AdminChatRequested", (message) -> {
@@ -582,7 +594,8 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
 
         hubConnection.on("ReceiveGroupMessage", (message) -> {
             System.out.println("ReceiveGroupMessage: " + message);
-            if (GeneralChatActivity.active) GeneralChatActivity.generalChatActivity.receivedGroupMessageNewServer(message);
+            if (GeneralChatActivity.active)
+                GeneralChatActivity.generalChatActivity.receivedGroupMessageNewServer(message);
 
 
             if (HomeFragment.newInstance() != null) {
@@ -661,7 +674,8 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
         startActivity(intent);
         logOutOpenPath();
         finishAffinity();
-        if (showMessage) Toast.makeText((Context) this, "You have been logged into another device", Toast.LENGTH_LONG).show();
+        if (showMessage)
+            Toast.makeText((Context) this, "You have been logged into another device", Toast.LENGTH_LONG).show();
     }
 
     private void showAlertDialog(ChatInitiated requestData) {
@@ -704,7 +718,8 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
                         }
 
                         if (id == Integer.parseInt(HomeFragment.userId)) {
-                            if (GeneralChatActivity.active) GeneralChatActivity.generalChatActivity.chatInitiated(chatInitiated, b);
+                            if (GeneralChatActivity.active)
+                                GeneralChatActivity.generalChatActivity.chatInitiated(chatInitiated, b);
                         }
                     }
                 }
@@ -732,7 +747,8 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
             protected void onPostExecute(Boolean aBoolean) {
                 if (aBoolean) {
                     if (topicStatusUpdate.ApplicationUserId == Integer.parseInt(HomeFragment.userId)) {
-                        if (GeneralChatActivity.active) GeneralChatActivity.generalChatActivity.statusUpdated(topicStatusUpdate, b);
+                        if (GeneralChatActivity.active)
+                            GeneralChatActivity.generalChatActivity.statusUpdated(topicStatusUpdate, b);
                     }
                 }
             }
@@ -920,7 +936,8 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
                 _currentTabPosition = tab.getPosition();
                 _viewPager.setCurrentItem(_currentTabPosition);
                 viewPagerCount = _viewPager.getCurrentItem();
-                if (isWalkThroughEnable) openWalkThroughDialog(_currentTabPosition, sharedPreferences);
+                if (isWalkThroughEnable)
+                    openWalkThroughDialog(_currentTabPosition, sharedPreferences);
 
                 _sectionViewPagerAdapter.setOnSelectView(tab.parent, tab.getPosition());
             }
@@ -939,7 +956,8 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
                     NotificationsFragment.newInstance().refresh(false);
                 }
 
-                if (_currentTabPosition >= 0) _sectionViewPagerAdapter.setUnSelectView(_tabLayout.getTabAt(_currentTabPosition).parent, _currentTabPosition);
+                if (_currentTabPosition >= 0)
+                    _sectionViewPagerAdapter.setUnSelectView(_tabLayout.getTabAt(_currentTabPosition).parent, _currentTabPosition);
                 updateNotificationStatus(tab);
             }
 
@@ -995,6 +1013,33 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
 
         }
         brivoRefreshPass(false);
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) { // Check for Android 14
+            askFullScreenIntentPermission();
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    private void askFullScreenIntentPermission() {
+        PackageManager packageManager = getPackageManager();
+        boolean hasFsiPermission = packageManager.checkPermission(
+                Manifest.permission.USE_FULL_SCREEN_INTENT, getPackageName())
+                == PackageManager.PERMISSION_GRANTED;
+
+        if (!hasFsiPermission) {
+            // User doesn't have FSI permission, navigate to settings
+            navigateToManageFsiSettings();
+        }
+    }
+
+    private void navigateToManageFsiSettings() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) { // Check for Android 14
+            // Use the original `ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT`
+            Intent intent = new Intent(Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT);
+            intent.setData(Uri.parse("package:" + getPackageName()));
+            startActivity(intent);
+        }
     }
 
     /**
@@ -1008,7 +1053,7 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences((Context) this);
 
-        initializePDKLibrary(FCM_token);
+//        initializePDKLibrary(FCM_token);
 
         String activationCode = sharedPreferences.getString("activationCode", null);
         regID = sharedPreferences.getString("registrationID", null);
@@ -1027,11 +1072,11 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
 
         String pdkActivationCode = sharedPreferences.getString("PDK_ACTIVATION_CODE", null);
         if (pdkActivationCode == null) {
-            getActivationCode();
+//            getActivationCode();
         }
     }
 
-    private void initializePDKLibrary(String fcm_token) {
+/*    private void initializePDKLibrary(String fcm_token) {
         sdk = new PDKLibraryRxWrapper((Context) this, new PDKLibrary.StatusCallback() {
             @Override
             public void syncDataError(@NonNull DataSyncException e) {
@@ -1048,9 +1093,9 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
             return Single.just(map);
         });
         sdk.init(fcm_token);
-    }
+    }*/
 
-    @SuppressLint("CheckResult")
+/*    @SuppressLint("CheckResult")
     private void redeemCredentials(String activationCode) {
         if (activationCode != null) {
             Log.e("PDK Activation Code", activationCode);
@@ -1061,9 +1106,9 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
                 Log.d("PDK", "redeemCredential isSuccess " + listResult.isSuccess() + " " + listResult.getOrNull() + ", errors: " + listResult.exceptionOrNull());
             });
         }
-    }
+    }*/
 
-    private void getActivationCode() {
+  /*  private void getActivationCode() {
         WebService.getInstance().getPDKActivationCode(new RestCallBack<String>() {
             @Override
             public void onResponse(String response) {
@@ -1079,7 +1124,7 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
                 Log.e("onFailure", "getActivationCode Failed");
             }
         });
-    }
+    }*/
 
     /**
      * Registering hub in background else will throw main thread exception
@@ -1126,73 +1171,102 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
     private void openWalkThroughDialog(int position, SharedPreferences sharedPreferences) {
         if (isGuestUser) {
             if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_PROMOTIONS) {
-                if (isGWTCoupons) if (AllCouponsFragment.newInstance()._adapter != null) AllCouponsFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isGWTCoupons) if (AllCouponsFragment.newInstance()._adapter != null)
+                    AllCouponsFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_DIGITAL_KEYS) {
-                if (isGWTDigitalKey) if (GuestDigitalKeysFragment.newInstance()._adapter != null) GuestDigitalKeysFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isGWTDigitalKey) if (GuestDigitalKeysFragment.newInstance()._adapter != null)
+                    GuestDigitalKeysFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_NOTIFICATIONS) {
-                if (isGWTNotifictions) if (NotificationsFragment.newInstance()._adapter != null) NotificationsFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isGWTNotifictions) if (NotificationsFragment.newInstance()._adapter != null)
+                    NotificationsFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_HEALTH) {
-                if (isGWTHealthAndWellness) if (HealthFragment.newInstance()._adapter != null) HealthFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isGWTHealthAndWellness) if (HealthFragment.newInstance()._adapter != null)
+                    HealthFragment.newInstance()._adapter.notifyDataSetChanged();
             }
         } else if (role.equals(TabbedActivity.tabbedActivity.getString(R.string.role_leasing_officer)) || role.equals(TabbedActivity.tabbedActivity.getString(R.string.role_property_manager))) {
 
             if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_ACCESS_POINTS) {
-                if (isRWTAccessPoint) if (AccessPointsFragment.newInstance()._adapter != null) AccessPointsFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isRWTAccessPoint) if (AccessPointsFragment.newInstance()._adapter != null)
+                    AccessPointsFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_SERVICE_KEYS) {
-                if (isRWTServiceKey) if (ServiceKeysFragment.newInstance()._adapter != null) ServiceKeysFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isRWTServiceKey) if (ServiceKeysFragment.newInstance()._adapter != null)
+                    ServiceKeysFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_PROMOTIONS) {
-                if (isRWTCoupons) if (AllCouponsFragment.newInstance()._adapter != null) AllCouponsFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isRWTCoupons) if (AllCouponsFragment.newInstance()._adapter != null)
+                    AllCouponsFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_DIGITAL_KEYS) {
-                if (isRWTDigitalKey) if (AllDigitalKeysFragment.newInstance()._adapter != null) AllDigitalKeysFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isRWTDigitalKey) if (AllDigitalKeysFragment.newInstance()._adapter != null)
+                    AllDigitalKeysFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_NOTIFICATIONS) {
-                if (isRWTNotifictions) if (NotificationsFragment.newInstance()._adapter != null) NotificationsFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isRWTNotifictions) if (NotificationsFragment.newInstance()._adapter != null)
+                    NotificationsFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_RENTAL_TOOL) {
                 if (isRWTRenterTools) RentalToolFragment.newInstance().displayWalkThrough();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_HEALTH) {
-                if (isRWTHealthAndWellness) if (HealthFragment.newInstance()._adapter != null) HealthFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isRWTHealthAndWellness) if (HealthFragment.newInstance()._adapter != null)
+                    HealthFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_VOICE_MAIL) {
-                if (isRWTVoiceMail) if (VoiceMailFragment.newInstance()._adapter != null) VoiceMailFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isRWTVoiceMail) if (VoiceMailFragment.newInstance()._adapter != null)
+                    VoiceMailFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_BILLBOARD) {
-                if (isRWTBulletinBoard) if (BillBoardFragment.newInstance()._adapter != null) BillBoardFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isRWTBulletinBoard) if (BillBoardFragment.newInstance()._adapter != null)
+                    BillBoardFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_CHAT) {
-                if (isRWTTopic) if (GeneralChatAdminFragment.newInstance().viewpager != null) if (GeneralChatAdminFragment.newInstance().viewpager.getAdapter() != null) GeneralChatAdminFragment.newInstance().viewpager.getAdapter().notifyDataSetChanged();
+                if (isRWTTopic) if (GeneralChatAdminFragment.newInstance().viewpager != null)
+                    if (GeneralChatAdminFragment.newInstance().viewpager.getAdapter() != null)
+                        GeneralChatAdminFragment.newInstance().viewpager.getAdapter().notifyDataSetChanged();
             }
 
         } else if (role.equals(TabbedActivity.tabbedActivity.getString(R.string.role_vendor))) {
             if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_ACCESS_POINTS) {
-                if (isRWTAccessPoint) if (AccessPointsFragment.newInstance()._adapter != null) AccessPointsFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isRWTAccessPoint) if (AccessPointsFragment.newInstance()._adapter != null)
+                    AccessPointsFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_PROMOTIONS) {
-                if (isGWTCoupons) if (AllCouponsFragment.newInstance()._adapter != null) AllCouponsFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isGWTCoupons) if (AllCouponsFragment.newInstance()._adapter != null)
+                    AllCouponsFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_DIGITAL_KEYS) {
-                if (isGWTDigitalKey) if (GuestDigitalKeysFragment.newInstance()._adapter != null) GuestDigitalKeysFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isGWTDigitalKey) if (GuestDigitalKeysFragment.newInstance()._adapter != null)
+                    GuestDigitalKeysFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_NOTIFICATIONS) {
-                if (isGWTNotifictions) if (NotificationsFragment.newInstance()._adapter != null) NotificationsFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isGWTNotifictions) if (NotificationsFragment.newInstance()._adapter != null)
+                    NotificationsFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_VOICE_MAIL) {
-                if (isRWTVoiceMail) if (VoiceMailFragment.newInstance()._adapter != null) VoiceMailFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isRWTVoiceMail) if (VoiceMailFragment.newInstance()._adapter != null)
+                    VoiceMailFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_BILLBOARD) {
-                if (isRWTBulletinBoard) if (BillBoardFragment.newInstance()._adapter != null) BillBoardFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isRWTBulletinBoard) if (BillBoardFragment.newInstance()._adapter != null)
+                    BillBoardFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_CHAT) {
-                if (isRWTTopic) if (GeneralChatFragment.newInstance()._adapter != null) GeneralChatFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isRWTTopic) if (GeneralChatFragment.newInstance()._adapter != null)
+                    GeneralChatFragment.newInstance()._adapter.notifyDataSetChanged();
             }
         } else {
             if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_ACCESS_POINTS) {
-                if (isRWTAccessPoint) if (AccessPointsFragment.newInstance()._adapter != null) AccessPointsFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isRWTAccessPoint) if (AccessPointsFragment.newInstance()._adapter != null)
+                    AccessPointsFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_PROMOTIONS) {
-                if (isRWTCoupons) if (AllCouponsFragment.newInstance()._adapter != null) AllCouponsFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isRWTCoupons) if (AllCouponsFragment.newInstance()._adapter != null)
+                    AllCouponsFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_DIGITAL_KEYS) {
-                if (isRWTDigitalKey) if (AllDigitalKeysFragment.newInstance()._adapter != null) AllDigitalKeysFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isRWTDigitalKey) if (AllDigitalKeysFragment.newInstance()._adapter != null)
+                    AllDigitalKeysFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_NOTIFICATIONS) {
-                if (isRWTNotifictions) if (NotificationsFragment.newInstance()._adapter != null) NotificationsFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isRWTNotifictions) if (NotificationsFragment.newInstance()._adapter != null)
+                    NotificationsFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_RENTAL_TOOL) {
                 if (isRWTRenterTools) RentalToolFragment.newInstance().displayWalkThrough();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_HEALTH) {
-                if (isRWTHealthAndWellness) if (HealthFragment.newInstance()._adapter != null) HealthFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isRWTHealthAndWellness) if (HealthFragment.newInstance()._adapter != null)
+                    HealthFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_VOICE_MAIL) {
-                if (isRWTVoiceMail) if (VoiceMailFragment.newInstance()._adapter != null) VoiceMailFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isRWTVoiceMail) if (VoiceMailFragment.newInstance()._adapter != null)
+                    VoiceMailFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_BILLBOARD) {
-                if (isRWTBulletinBoard) if (BillBoardFragment.newInstance()._adapter != null) BillBoardFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isRWTBulletinBoard) if (BillBoardFragment.newInstance()._adapter != null)
+                    BillBoardFragment.newInstance()._adapter.notifyDataSetChanged();
             } else if (position == _sectionViewPagerAdapter.FRAGMENT_POSITION_CHAT) {
-                if (isRWTTopic) if (GeneralChatFragment.newInstance()._adapter != null) GeneralChatFragment.newInstance()._adapter.notifyDataSetChanged();
+                if (isRWTTopic) if (GeneralChatFragment.newInstance()._adapter != null)
+                    GeneralChatFragment.newInstance()._adapter.notifyDataSetChanged();
             }
 
         }
@@ -1306,7 +1380,8 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
 
         view.findViewById(R.id.closedUtcLabel).setVisibility(item.getStatus() == MaintenanceRequest.Status.Closed ? View.VISIBLE : View.GONE);
         view.findViewById(R.id.closedUtc).setVisibility(item.getStatus() == MaintenanceRequest.Status.Closed ? View.VISIBLE : View.GONE);
-        if (item.getStatus() == MaintenanceRequest.Status.Closed) ((TextView) view.findViewById(R.id.closedUtc)).setText(formatter.format(item.getClosedUtc()));
+        if (item.getStatus() == MaintenanceRequest.Status.Closed)
+            ((TextView) view.findViewById(R.id.closedUtc)).setText(formatter.format(item.getClosedUtc()));
 
         //recyclerview set
         if (item.getMaintenanceRequestFiles().size() > 0) {
@@ -1631,7 +1706,8 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
         else {
             Date now = new Date();
             if (now.after(item.getFromUtc()) && now.before(item.getToUtc())) status = "Valid";
-            else if (now.before(item.getFromUtc()) && now.before(item.getToUtc())) status = "Upcoming";
+            else if (now.before(item.getFromUtc()) && now.before(item.getToUtc()))
+                status = "Upcoming";
         }
 
         TextView tvStatus = view.findViewById(R.id.status);
@@ -2125,7 +2201,7 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
         if (item.getOperator() == Utilities.OPERATOR_BRIVO) {
             unlockBrivoDoor();
         } else if (item.getOperator() == Utilities.OPERATOR_PDK && !isGuestUser) {
-            unlockPDKDoor();
+//            unlockPDKDoor();
         } else if (item.getOperator() == Utilities.OPERATOR_OPENPATH && !isGuestUser) {
             unlockOpenPathDoor();
         } else {
@@ -2152,20 +2228,20 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
         }
     }
 
-    private void unlockPDKDoor() {
-
-        String accessPointId = String.valueOf(_accessPoint.id);
-        if (sdk == null) return;
-
-        sdk.open(_accessPoint.getPdkPanelId(), _accessPoint.id).subscribe(unitResult -> {
-            Log.d("PDK", "open the door result " + unitResult.isSuccess() + " " + unitResult.getOrNull() + ", errors: " + unitResult.exceptionOrNull());
-            if (unitResult.isSuccess()) {
-                unlockSuccessMethod(true, accessPointId);
-            } else {
-                unlockFailure(true, accessPointId);
-            }
-        });
-    }
+//    private void unlockPDKDoor() {
+//
+//        String accessPointId = String.valueOf(_accessPoint.id);
+//        if (sdk == null) return;
+//
+//        sdk.open(_accessPoint.getPdkPanelId(), _accessPoint.id).subscribe(unitResult -> {
+//            Log.d("PDK", "open the door result " + unitResult.isSuccess() + " " + unitResult.getOrNull() + ", errors: " + unitResult.exceptionOrNull());
+//            if (unitResult.isSuccess()) {
+//                unlockSuccessMethod(true, accessPointId);
+//            } else {
+//                unlockFailure(true, accessPointId);
+//            }
+//        });
+//    }
 
     @Override
     public void onGuestSlideUnlockTapped(int position, AccessPoint item, GuestAccessPointsFragment accessPointsFragment) {
@@ -2286,6 +2362,16 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
         builder.setPositiveButton("Turn On", (dialog, which) -> {
             dialog.cancel();
             BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
             bluetoothAdapter.enable();
             new Handler().postDelayed(() -> unlockBrivoDoor(), 2000);
         });

@@ -46,6 +46,7 @@ import net.invictusmanagement.invictuslifestyle.webservice.WebServiceBrivoSmarth
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import okhttp3.ResponseBody;
 
@@ -178,7 +179,8 @@ public class BrivoDevicesFragment extends Fragment implements IRefreshableFragme
 
             @Override
             protected void onPostExecute(Boolean success) {
-                if (!success) Toast.makeText(_context, "Unable to refresh brivo devices. Please try again later.", Toast.LENGTH_LONG).show();
+                if (!success)
+                    Toast.makeText(_context, "Unable to refresh brivo devices. Please try again later.", Toast.LENGTH_LONG).show();
             }
         }.execute();
     }
@@ -202,7 +204,8 @@ public class BrivoDevicesFragment extends Fragment implements IRefreshableFragme
                     sharedPreferences.edit().putString("bshPassword", loginBrivoSmartHomeUser.password).apply();
                     brivoSmartHomeLoginToken = response.token;
                     callAPIForGetDeviceList(response.token);
-                } else Toast.makeText(getContext(), "Something went wrong, Please try again later!", Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(getContext(), "Something went wrong, Please try again later!", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -228,7 +231,12 @@ public class BrivoDevicesFragment extends Fragment implements IRefreshableFragme
             @Override
             public void onResponse(ResponseListBrivoSmartHome response) {
                 if (response != null) {
-                    _adapter.refresh(response.getResults());
+                    List<BrivoDeviceData> brivoDeviceDataList = response.getResults();
+                   List<BrivoDeviceData> filteredList = brivoDeviceDataList.stream()
+                           .filter(brivoDeviceData -> !brivoDeviceData.getId().contains("~brivo"))
+                           .collect(Collectors.toList());
+
+                    _adapter.refresh(filteredList);
                     _adapter.notifyDataSetChanged();
                     _swipeRefreshLayout.setRefreshing(false);
                 } else {
@@ -261,7 +269,7 @@ public class BrivoDevicesFragment extends Fragment implements IRefreshableFragme
         } else if (brivoDeviceData.getType().equals("thermostat")) {
             if (thermostatSettingDialog != null) {
                 if (!thermostatSettingDialog.isHidden()) {
-                    thermostatSettingDialog.setBrivoDeviceData(brivoDeviceData,brivoSmartHomeLoginToken);
+                    thermostatSettingDialog.setBrivoDeviceData(brivoDeviceData, brivoSmartHomeLoginToken);
                     thermostatSettingDialog.show(getActivity().getSupportFragmentManager(), "addBrivoUserDialog");
                     thermostatSettingDialog.setCancelable(false);
                 } else {
@@ -286,7 +294,8 @@ public class BrivoDevicesFragment extends Fragment implements IRefreshableFragme
                     data.setState("secured");
                     _adapter.refreshItem(data, position);
                     _adapter.notifyItemChanged(position);
-                } else Toast.makeText(getContext(), "Something went wrong, Please try again later!", Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(getContext(), "Something went wrong, Please try again later!", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -309,11 +318,12 @@ public class BrivoDevicesFragment extends Fragment implements IRefreshableFragme
                     data.setState("unsecured");
                     _adapter.refreshItem(data, position);
                     _adapter.notifyItemChanged(position);
-                } else Toast.makeText(getContext(), "Something went wrong, Please try again later!", Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(getContext(), "Something went wrong, Please try again later!", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(WSException wse) { 
+            public void onFailure(WSException wse) {
                 ProgressDialog.dismissProgress();
 //                Toast.makeText(getContext(), "Something went wrong, Please try again later!", Toast.LENGTH_SHORT).show();
                 Toast.makeText(getContext(), wse.getServerMessage(), Toast.LENGTH_SHORT).show();
@@ -332,7 +342,8 @@ public class BrivoDevicesFragment extends Fragment implements IRefreshableFragme
                     data.setState("off");
                     _adapter.refreshItem(data, position);
                     _adapter.notifyItemChanged(position);
-                } else Toast.makeText(getContext(), "Something went wrong, Please try again later!", Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(getContext(), "Something went wrong, Please try again later!", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -354,7 +365,8 @@ public class BrivoDevicesFragment extends Fragment implements IRefreshableFragme
                     data.setState("on");
                     _adapter.refreshItem(data, position);
                     _adapter.notifyItemChanged(position);
-                } else Toast.makeText(getContext(), "Something went wrong, Please try again later!", Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(getContext(), "Something went wrong, Please try again later!", Toast.LENGTH_SHORT).show();
             }
 
             @Override

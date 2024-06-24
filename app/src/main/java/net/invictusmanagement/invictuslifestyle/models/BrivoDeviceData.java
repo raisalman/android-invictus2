@@ -6,7 +6,7 @@ import java.util.List;
 
 
 public class BrivoDeviceData implements Serializable {
-    private Integer id;
+    private String id;
     private String type;
     private String name;
     private List<Integer> property = new ArrayList<Integer>();
@@ -28,11 +28,11 @@ public class BrivoDeviceData implements Serializable {
     private List<Object> alerts = new ArrayList<Object>();
     private String index;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
