@@ -250,16 +250,16 @@ public class SectionViewPagerAdapter extends FragmentStateAdapter {
         } else {
             FRAGMENT_POSITION_HOME = 0;
             FRAGMENT_POSITION_ACCESS_POINTS = 1;
-            FRAGMENT_POSITION_BRIVO_DEVICES = 2;
-            FRAGMENT_POSITION_PROMOTIONS = 3;
-            FRAGMENT_POSITION_DIGITAL_KEYS = 4;
-            FRAGMENT_POSITION_NOTIFICATIONS = 5;
-            FRAGMENT_POSITION_HEALTH = 6;
+//            FRAGMENT_POSITION_BRIVO_DEVICES = 2;
+//            FRAGMENT_POSITION_PROMOTIONS = 3;
+//            FRAGMENT_POSITION_DIGITAL_KEYS = 4;
+//            FRAGMENT_POSITION_NOTIFICATIONS = 5;
+//            FRAGMENT_POSITION_HEALTH = 6;
 
-//            FRAGMENT_POSITION_PROMOTIONS = 2;
-//            FRAGMENT_POSITION_DIGITAL_KEYS = 3;
-//            FRAGMENT_POSITION_NOTIFICATIONS = 4;
-//            FRAGMENT_POSITION_HEALTH = 5;
+            FRAGMENT_POSITION_PROMOTIONS = 2;
+            FRAGMENT_POSITION_DIGITAL_KEYS = 3;
+            FRAGMENT_POSITION_NOTIFICATIONS = 4;
+            FRAGMENT_POSITION_HEALTH = 5;
         }
 
     }
@@ -365,9 +365,9 @@ public class SectionViewPagerAdapter extends FragmentStateAdapter {
         } else {
             if (position == FRAGMENT_POSITION_ACCESS_POINTS) {
                 return AccessPointsFragment.newInstance();
-            } else if (position == FRAGMENT_POSITION_BRIVO_DEVICES) {
+            } /*else if (position == FRAGMENT_POSITION_BRIVO_DEVICES) {
                 return BrivoDevicesFragment.newInstance();
-            } else if (position == FRAGMENT_POSITION_PROMOTIONS) {
+            } */else if (position == FRAGMENT_POSITION_PROMOTIONS) {
                 return BusinessTypesFragment.newInstance();
             } else if (position == FRAGMENT_POSITION_DIGITAL_KEYS) {
                 return GuestDigitalKeysFragment.newInstance();

@@ -113,7 +113,7 @@ public class LoginTask implements Runnable {
         OpenpathLogging.v("calling helium api " + address);
         URL url = new URL(address);
         HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
-        urlConnection.setSSLSocketFactory(getSslSocketFactory());
+//        urlConnection.setSSLSocketFactory(getSslSocketFactory());
         urlConnection.setHostnameVerifier((s, sslSession) -> true);
         urlConnection.setRequestMethod(options.get("method"));
         urlConnection.setRequestProperty("Accept", "application/json");
@@ -151,30 +151,30 @@ public class LoginTask implements Runnable {
         return new HeliumApiResponse(responseCode, response.toString());
     }
 
-    private SSLSocketFactory getSslSocketFactory() {
-        try {
-            TrustManager[] trustAllCerts = new TrustManager[]{
-                    new X509TrustManager() {
-                        public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
-                        }
-
-                        public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
-                        }
-
-                        public X509Certificate[] getAcceptedIssuers() {
-                            return new X509Certificate[0];
-                        }
-                    }
-            };
-
-            SSLContext sslContext = SSLContext.getInstance("TLS");
-            sslContext.init(null, trustAllCerts, new SecureRandom());
-
-            // Set the custom SSLContext as the default SSLContext for the application
-            return sslContext.getSocketFactory();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+//    private SSLSocketFactory getSslSocketFactory() {
+//        try {
+//            TrustManager[] trustAllCerts = new TrustManager[]{
+//                    new X509TrustManager() {
+//                        public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+//                        }
+//
+//                        public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+//                        }
+//
+//                        public X509Certificate[] getAcceptedIssuers() {
+//                            return new X509Certificate[0];
+//                        }
+//                    }
+//            };
+//
+//            SSLContext sslContext = SSLContext.getInstance("TLS");
+//            sslContext.init(null, trustAllCerts, new SecureRandom());
+//
+//            // Set the custom SSLContext as the default SSLContext for the application
+//            return sslContext.getSocketFactory();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
 }

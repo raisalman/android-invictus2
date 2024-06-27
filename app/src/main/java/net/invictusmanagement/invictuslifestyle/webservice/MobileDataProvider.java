@@ -173,7 +173,7 @@ public class MobileDataProvider {
             Log.d(Utilities.TAG, "" + url.toString());
 
             https = (HttpsURLConnection) url.openConnection();
-            https.setSSLSocketFactory(getSslSocketFactory());
+//            https.setSSLSocketFactory(getSslSocketFactory());
             https.setHostnameVerifier((s, sslSession) -> true);
             https.setReadTimeout(HttpsReadTimeout);
             https.setConnectTimeout(HttpsConnectTimeout);
@@ -251,32 +251,32 @@ public class MobileDataProvider {
         }
         return result;
     }
-    private SSLSocketFactory getSslSocketFactory() {
-        try {
-            TrustManager[] trustAllCerts = new TrustManager[]{
-                    new X509TrustManager() {
-                        public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
-                        }
-
-                        public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
-                        }
-
-                        public X509Certificate[] getAcceptedIssuers() {
-                            return new X509Certificate[0];
-                        }
-                    }
-            };
-
-            SSLContext sslContext = SSLContext.getInstance("TLS");
-            sslContext.init(null, trustAllCerts, new SecureRandom());
-
-            // Set the custom SSLContext as the default SSLContext for the application
-            return sslContext.getSocketFactory();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+//    private SSLSocketFactory getSslSocketFactory() {
+//        try {
+//            TrustManager[] trustAllCerts = new TrustManager[]{
+//                    new X509TrustManager() {
+//                        public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+//                        }
+//
+//                        public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+//                        }
+//
+//                        public X509Certificate[] getAcceptedIssuers() {
+//                            return new X509Certificate[0];
+//                        }
+//                    }
+//            };
+//
+//            SSLContext sslContext = SSLContext.getInstance("TLS");
+//            sslContext.init(null, trustAllCerts, new SecureRandom());
+//
+//            // Set the custom SSLContext as the default SSLContext for the application
+//            return sslContext.getSocketFactory();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
     public AuthenticationResult verifyOTP(Login payload) throws IOException, ForbiddenException {
 
         AuthenticationResult result = new AuthenticationResult();
@@ -286,7 +286,7 @@ public class MobileDataProvider {
             URL url = new URL(_baseUrl + "account/newverifyotp");
             Log.d(Utilities.TAG, "" + url.toString());
             https = (HttpsURLConnection) url.openConnection();
-            https.setSSLSocketFactory(getSslSocketFactory());
+//            https.setSSLSocketFactory(getSslSocketFactory());
             https.setHostnameVerifier((s, sslSession) -> true);
             https.setReadTimeout(HttpsReadTimeout);
             https.setConnectTimeout(HttpsConnectTimeout);
@@ -366,7 +366,7 @@ public class MobileDataProvider {
             Log.d(Utilities.TAG, "Authenticating");
             URL url = new URL(_baseUrl + "account/guestlogin");
             https = (HttpsURLConnection) url.openConnection();
-            https.setSSLSocketFactory(getSslSocketFactory());
+//            https.setSSLSocketFactory(getSslSocketFactory());
             https.setHostnameVerifier((s, sslSession) -> true);
             https.setReadTimeout(HttpsReadTimeout);
             https.setConnectTimeout(HttpsConnectTimeout);
@@ -774,14 +774,14 @@ public class MobileDataProvider {
             Log.d(Utilities.TAG, "Executing Https Get: " + _baseUrl + path);
             URL url = new URL(_baseUrl + path);
             https = (HttpsURLConnection) url.openConnection();
-            https.setSSLSocketFactory(getSslSocketFactory());
+//            https.setSSLSocketFactory(getSslSocketFactory());
             https.setHostnameVerifier((s, sslSession) -> true);
             https.setReadTimeout(HttpsReadTimeout);
             https.setConnectTimeout(HttpsConnectTimeout);
             if (!TextUtils.isEmpty(_authenticationCookie)) {
                 https.setRequestProperty("Cookie", _authenticationCookie);
             }
-            https.setSSLSocketFactory(getSslSocketFactory());
+//            https.setSSLSocketFactory(getSslSocketFactory());
             https.setHostnameVerifier((s, sslSession) -> true);
             https.connect();
 
@@ -826,7 +826,7 @@ public class MobileDataProvider {
             Log.e(Utilities.TAG, "Executing Https Put/Post: " + _baseUrl + path);
             URL url = new URL(_baseUrl + path);
             https = (HttpsURLConnection) url.openConnection();
-            https.setSSLSocketFactory(getSslSocketFactory());
+//            https.setSSLSocketFactory(getSslSocketFactory());
             https.setHostnameVerifier((s, sslSession) -> true);
             https.setReadTimeout(HttpsReadTimeout);
             https.setConnectTimeout(HttpsConnectTimeout);
@@ -879,7 +879,7 @@ public class MobileDataProvider {
             Log.e(Utilities.TAG, "Executing Https Put/Post: " + _baseUrl + path);
             URL url = new URL(_baseUrl + path);
             https = (HttpsURLConnection) url.openConnection();
-            https.setSSLSocketFactory(getSslSocketFactory());
+//            https.setSSLSocketFactory(getSslSocketFactory());
             https.setHostnameVerifier((s, sslSession) -> true);
             https.setReadTimeout(HttpsReadTimeout);
             https.setConnectTimeout(HttpsConnectTimeout);
@@ -943,7 +943,7 @@ public class MobileDataProvider {
             Log.d(Utilities.TAG, "Executing Https Put/Post: " + _baseUrl + path);
             URL url = new URL(_baseUrl + path);
             https = (HttpsURLConnection) url.openConnection();
-            https.setSSLSocketFactory(getSslSocketFactory());
+//            https.setSSLSocketFactory(getSslSocketFactory());
             https.setHostnameVerifier((s, sslSession) -> true);
             https.setReadTimeout(HttpsReadTimeout);
             https.setConnectTimeout(HttpsConnectTimeout);
@@ -996,7 +996,7 @@ public class MobileDataProvider {
             Log.d(Utilities.TAG, "Params " + payload);
             URL url = new URL(_baseUrl + path);
             https = (HttpsURLConnection) url.openConnection();
-            https.setSSLSocketFactory(getSslSocketFactory());
+//            https.setSSLSocketFactory(getSslSocketFactory());
             https.setHostnameVerifier((s, sslSession) -> true);
             https.setReadTimeout(HttpsReadTimeout);
             https.setConnectTimeout(HttpsConnectTimeout);
@@ -1050,7 +1050,7 @@ public class MobileDataProvider {
             Log.d(Utilities.TAG, "Executing Https Get: " + _baseUrl + path);
             URL url = new URL(_baseUrl + path);
             https = (HttpsURLConnection) url.openConnection();
-            https.setSSLSocketFactory(getSslSocketFactory());
+//            https.setSSLSocketFactory(getSslSocketFactory());
             https.setHostnameVerifier((s, sslSession) -> true);
             https.setReadTimeout(HttpsReadTimeout);
             https.setConnectTimeout(HttpsConnectTimeout);
@@ -1108,7 +1108,7 @@ public class MobileDataProvider {
             Log.d(Utilities.TAG, "Executing Https Get: " + _baseUrl + path);
             URL url = new URL(_baseUrl + path);
             https = (HttpsURLConnection) url.openConnection();
-            https.setSSLSocketFactory(getSslSocketFactory());
+//            https.setSSLSocketFactory(getSslSocketFactory());
             https.setHostnameVerifier((s, sslSession) -> true);
             https.setReadTimeout(HttpsReadTimeout);
             https.setConnectTimeout(HttpsConnectTimeout);
@@ -1164,7 +1164,7 @@ public class MobileDataProvider {
             Log.d(Utilities.TAG, "Executing Https Put/Post: " + _baseUrl + path);
             URL url = new URL(_baseUrl + path);
             https = (HttpsURLConnection) url.openConnection();
-            https.setSSLSocketFactory(getSslSocketFactory());
+//            https.setSSLSocketFactory(getSslSocketFactory());
             https.setHostnameVerifier((s, sslSession) -> true);
             https.setReadTimeout(HttpsReadTimeout);
             https.setConnectTimeout(HttpsConnectTimeout);
@@ -1220,7 +1220,7 @@ public class MobileDataProvider {
             Log.d(Utilities.TAG, "Executing Https Put/Post: " + _baseUrl + path);
             URL url = new URL(_baseUrl + path);
             https = (HttpsURLConnection) url.openConnection();
-            https.setSSLSocketFactory(getSslSocketFactory());
+//            https.setSSLSocketFactory(getSslSocketFactory());
             https.setHostnameVerifier((s, sslSession) -> true);
             https.setReadTimeout(HttpsReadTimeout);
             https.setConnectTimeout(HttpsConnectTimeout);
@@ -1278,7 +1278,7 @@ public class MobileDataProvider {
             Log.d(Utilities.TAG, "Executing Https Put/Post: " + _baseUrl + path);
             URL url = new URL(_baseUrl + path);
             https = (HttpsURLConnection) url.openConnection();
-            https.setSSLSocketFactory(getSslSocketFactory());
+//            https.setSSLSocketFactory(getSslSocketFactory());
             https.setHostnameVerifier((s, sslSession) -> true);
             https.setReadTimeout(HttpsReadTimeout);
             https.setConnectTimeout(HttpsConnectTimeout);
@@ -1334,7 +1334,7 @@ public class MobileDataProvider {
             Log.d(Utilities.TAG, "Executing Https Put/Post: " + _baseUrl + path);
             URL url = new URL(_baseUrl + path);
             https = (HttpsURLConnection) url.openConnection();
-            https.setSSLSocketFactory(getSslSocketFactory());
+//            https.setSSLSocketFactory(getSslSocketFactory());
             https.setHostnameVerifier((s, sslSession) -> true);
             https.setReadTimeout(HttpsReadTimeout);
             https.setConnectTimeout(HttpsConnectTimeout);

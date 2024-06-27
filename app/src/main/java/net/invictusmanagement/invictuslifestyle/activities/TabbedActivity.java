@@ -1,8 +1,10 @@
 package net.invictusmanagement.invictuslifestyle.activities;
 
+import static net.invictusmanagement.invictuslifestyle.MyApplication.context;
+
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.NotificationManager;
 import android.appwidget.AppWidgetManager;
 import android.bluetooth.BluetoothAdapter;
 import android.content.ActivityNotFoundException;
@@ -206,7 +208,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -588,7 +589,7 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
             ChatInitiated requestData = new GsonBuilder().registerTypeAdapter(Date.class, new MobileDataProvider.DateDeserializer()).create().fromJson(message, new TypeToken<ChatInitiated>() {
             }.getType());
 
-            showAlertDialog(requestData);
+            showFullScreenPermissionAlert(requestData);
 
         }, String.class);
 
@@ -678,7 +679,7 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
             Toast.makeText((Context) this, "You have been logged into another device", Toast.LENGTH_LONG).show();
     }
 
-    private void showAlertDialog(ChatInitiated requestData) {
+    private void showFullScreenPermissionAlert(ChatInitiated requestData) {
         String msgtext = requestData.Sender + " want to chat with you on below topic." + " Please click on Join button to continue.\n\nTopic: " + requestData.Topic;
         if (!requestData.Description.equals("")) {
             msgtext = msgtext + "\nDescription: " + requestData.Description;
@@ -865,6 +866,7 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         tabbedActivity = this;
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences((Context) TabbedActivity.this);
         OpenpathMobileAccessCore.getInstance().init(getApplication(), TabbedActivity.this);
@@ -875,6 +877,8 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
         forceUpdateCheck();
 //        checkPermission();
         askPermissionOpenPath();
+        //check full screen intent permission for android 14 and later
+        checkFullScreenIntentPermission();
         if (!isGuestUser) {
             if (isScreenVisible) {
                 initHubConnection();
@@ -1014,32 +1018,59 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
         }
         brivoRefreshPass(false);
 
+    }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) { // Check for Android 14
-            askFullScreenIntentPermission();
-        }
+
+    private void showFullScreenPermissionAlert() {
+        // Create an instance of AlertDialog.Builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Permission Required");
+        builder.setMessage("Please enable full screen notification intent permission in settings");
+
+        builder.setPositiveButton("Open Setting", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                navigateToManageFsiSettings();
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                finishAffinity();
+            }
+        });
+
+        builder.create().show();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
-    private void askFullScreenIntentPermission() {
-        PackageManager packageManager = getPackageManager();
-        boolean hasFsiPermission = packageManager.checkPermission(
-                Manifest.permission.USE_FULL_SCREEN_INTENT, getPackageName())
-                == PackageManager.PERMISSION_GRANTED;
+    private void   checkFullScreenIntentPermission() {
 
-        if (!hasFsiPermission) {
-            // User doesn't have FSI permission, navigate to settings
-            navigateToManageFsiSettings();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+            boolean canUseFullScreenIntent = notificationManager.canUseFullScreenIntent();
+
+//        PackageManager packageManager = getPackageManager();
+//        boolean hasFsiPermission = packageManager.checkPermission(
+//                Manifest.permission.USE_FULL_SCREEN_INTENT, getPackageName())
+//                == PackageManager.PERMISSION_GRANTED;
+
+            if (!canUseFullScreenIntent) {
+                // User doesn't have FSI permission, navigate to settings
+                showFullScreenPermissionAlert();
+            }
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     private void navigateToManageFsiSettings() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) { // Check for Android 14
-            // Use the original `ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT`
-            Intent intent = new Intent(Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT);
-            intent.setData(Uri.parse("package:" + getPackageName()));
-            startActivity(intent);
-        }
+        Intent intent = new Intent(Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT);
+        intent.setData(Uri.parse("package:" + getPackageName()));
+        startActivity(intent);
     }
 
     /**
@@ -2513,7 +2544,7 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
         });
     }
 
-    private void unlockAccessPoint(AccessPoint item, int position ) {
+    private void unlockAccessPoint(AccessPoint item, int position) {
         String accessPointId = String.valueOf(item.id);
         new AsyncTask<AccessPoint, Void, Boolean>() {
 
@@ -2795,7 +2826,8 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
         else {
             Date now = new Date();
             if (now.after(item.getFromUtc()) && now.before(item.getToUtc())) status = "Valid";
-            else if (now.before(item.getFromUtc()) && now.before(item.getToUtc())) status = "Upcoming";
+            else if (now.before(item.getFromUtc()) && now.before(item.getToUtc()))
+                status = "Upcoming";
         }
         ((TextView) view.findViewById(R.id.status)).setText(status);
         DateFormat formatter = SimpleDateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.SHORT);
@@ -2815,12 +2847,13 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
 
         if (status.equals("Valid")) {
             if (item.getMapUrls() != null) {
-                if (item.getMapUrls().length > 0) builder.setNegativeButton("View Map", (dialog, id) -> {
-                    Intent intent = new Intent((Context) TabbedActivity.this, GuestDigitalKeyMapActivity.class);
-                    intent.putExtra("imageMap", item.getMapUrl());
-                    intent.putExtra("imageMaps", item.getMapUrls());
-                    startActivity(intent);
-                });
+                if (item.getMapUrls().length > 0)
+                    builder.setNegativeButton("View Map", (dialog, id) -> {
+                        Intent intent = new Intent((Context) TabbedActivity.this, GuestDigitalKeyMapActivity.class);
+                        intent.putExtra("imageMap", item.getMapUrl());
+                        intent.putExtra("imageMaps", item.getMapUrls());
+                        startActivity(intent);
+                    });
             }
         }
 

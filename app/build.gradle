@@ -1,19 +1,28 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('D:\\Invictus Lifestyle\\android-invictus2\\app\\build\\jks\\invictus.jks')
+            storePassword '123456'
+            keyAlias 'key0'
+            keyPassword '123456'
+        }
+    }
     compileSdkVersion 34
-    buildToolsVersion "26.0.3"
     defaultConfig {
         applicationId 'net.invictusmanagement.invictuslifestyle'
         minSdkVersion 26
         targetSdkVersion 34
-        versionCode 49
-        versionName "1.43"
+        versionCode 53
+        versionName "1.47"
         manifestPlaceholders = [HOCKEYAPP_APP_ID: "e5f277ae9b1b4806a2c43c0b728b6b7b"]
+        signingConfig signingConfigs.release
     }
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.debug
         }
     }
     compileOptions {

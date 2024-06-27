@@ -140,7 +140,7 @@ public class LoginActivity extends BaseActivity {
         String android_id = Settings.Secure.getString(this.getContentResolver(),
                 Settings.Secure.ANDROID_ID);
 
-        Toast.makeText(this,android_id,Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this,android_id,Toast.LENGTH_SHORT).show();
         deviceId.setText(android_id);
         _emailView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override

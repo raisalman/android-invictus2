@@ -139,49 +139,49 @@ public class RestClient {
         });
 
         // SSL certificate bypass logic
-        try {
-            TrustManager[] trustAllCerts = new TrustManager[]{
-                    new X509TrustManager() {
-                        public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
-                        }
-
-                        public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
-                        }
-
-                        public X509Certificate[] getAcceptedIssuers() {
-                            return new X509Certificate[0];
-                        }
-                    }
-            };
-
-            SSLContext sslContext = SSLContext.getInstance("TLS");
-            sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
-
-            httpClient = builder
-                    .sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager) trustAllCerts[0])
-                    .hostnameVerifier((hostname, session) -> true)
-                    .build();
-
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(Utilities._baseUrl)
-                    .addConverterFactory(ScalarsConverterFactory.create())
-                    .addConverterFactory(GsonConverterFactory.create(gson))
-                    .client(httpClient)
-                    .build();
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            TrustManager[] trustAllCerts = new TrustManager[]{
+//                    new X509TrustManager() {
+//                        public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+//                        }
+//
+//                        public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+//                        }
+//
+//                        public X509Certificate[] getAcceptedIssuers() {
+//                            return new X509Certificate[0];
+//                        }
+//                    }
+//            };
+//
+//            SSLContext sslContext = SSLContext.getInstance("TLS");
+//            sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
+//
+//            httpClient = builder
+//                    .sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager) trustAllCerts[0])
+//                    .hostnameVerifier((hostname, session) -> true)
+//                    .build();
+//
+//            retrofit = new Retrofit.Builder()
+//                    .baseUrl(Utilities._baseUrl)
+//                    .addConverterFactory(ScalarsConverterFactory.create())
+//                    .addConverterFactory(GsonConverterFactory.create(gson))
+//                    .client(httpClient)
+//                    .build();
+//
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
         //ssl code end
 
-//        httpClient = builder.build();
-//
-//        retrofit = new Retrofit.Builder()
-//                .baseUrl(Utilities._baseUrl)
-//                .addConverterFactory(ScalarsConverterFactory.create())
-//                .addConverterFactory(GsonConverterFactory.create(gson))
-//                .client(httpClient)
-//                .build();
+        httpClient = builder.build();
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl(Utilities._baseUrl)
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(httpClient)
+                .build();
 
 
         restService = retrofit.create(RestService.class);
