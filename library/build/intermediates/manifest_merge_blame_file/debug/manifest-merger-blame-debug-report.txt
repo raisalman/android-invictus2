@@ -1,13 +1,8 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.bozapro.circularsliderrange"
-4    android:versionCode="2"
-5    android:versionName="1.2" >
+3    package="com.bozapro.circularsliderrange" >
+4
+5    <uses-sdk android:minSdkVersion="26" />
+5-->D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml
 6
-7    <uses-sdk
-8        android:minSdkVersion="26"
-8-->D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml
-9        android:targetSdkVersion="33" />
-9-->D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml
-10
-11</manifest>
+7</manifest>

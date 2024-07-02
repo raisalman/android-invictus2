@@ -74,6 +74,7 @@ android {
             resValue "string", "app_name", "Invictus Lifestyle"
         }
     }
+    namespace 'net.invictusmanagement.invictuslifestyle'
 }
 
 dependencies {

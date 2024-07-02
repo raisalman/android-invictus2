@@ -50,7 +50,7 @@ import java.util.stream.Collectors;
 
 import okhttp3.ResponseBody;
 
-public class BrivoDevicesFragment extends Fragment implements IRefreshableFragment, SetOnAddBrivoUserDialogClick, SetOnAddThermostatSettingDialogClick {
+public class BrivoDevicesFragment extends Fragment implements SetOnAddBrivoUserDialogClick, SetOnAddThermostatSettingDialogClick {
 
     public static BrivoDevicesListFragmentInteractionListener _listener;
     public static RecyclerView _recyclerView;
@@ -63,6 +63,7 @@ public class BrivoDevicesFragment extends Fragment implements IRefreshableFragme
 
     private AddBrivoUserDialog brivoUserDialog = null;
     private ThermostatSettingDialog thermostatSettingDialog = null;
+    private boolean _isVisible = false;
 
     private String brivoSmartHomeLoginToken;
 
@@ -105,13 +106,31 @@ public class BrivoDevicesFragment extends Fragment implements IRefreshableFragme
             _swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
-                    refresh();
+                    refresh(true);
                 }
             });
         }
-        initViews();
+//        initViews();
         return view;
     }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (_adapter.getDataSource().isEmpty()) {
+            initViews();
+        }
+
+    }
+
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//        if (brivoUserDialog != null && !brivoUserDialog.isHidden()) {
+//            brivoUserDialog.dismiss();
+//        }
+//    }
 
     public void initViews() {
         brivoUserDialog = new AddBrivoUserDialog(this);
@@ -128,9 +147,15 @@ public class BrivoDevicesFragment extends Fragment implements IRefreshableFragme
             }
 
         } else {
-            refresh();
+            refresh(true);
         }
 
+    }
+
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
     }
 
     @Override
@@ -148,11 +173,6 @@ public class BrivoDevicesFragment extends Fragment implements IRefreshableFragme
     public void onDetach() {
         super.onDetach();
         _listener = null;
-    }
-
-    @Override
-    public void refresh() {
-        refresh(true);
     }
 
     public void refresh(Boolean isProgress) {
@@ -186,11 +206,6 @@ public class BrivoDevicesFragment extends Fragment implements IRefreshableFragme
     }
 
 
-    @Override
-    public void onAddBrivoUserClicked() {
-
-    }
-
     private void callAPIForLogin() {
         LoginBrivoSmartHomeUser loginBrivoSmartHomeUser = new LoginBrivoSmartHomeUser();
         loginBrivoSmartHomeUser.username = sharedPreferences.getString("bshUserName", "");
@@ -221,7 +236,7 @@ public class BrivoDevicesFragment extends Fragment implements IRefreshableFragme
                 }
 
                 _swipeRefreshLayout.setRefreshing(false);
-                Toast.makeText(getContext(), "Something went wrong, Please try again later!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), wse.getServerMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -232,9 +247,9 @@ public class BrivoDevicesFragment extends Fragment implements IRefreshableFragme
             public void onResponse(ResponseListBrivoSmartHome response) {
                 if (response != null) {
                     List<BrivoDeviceData> brivoDeviceDataList = response.getResults();
-                   List<BrivoDeviceData> filteredList = brivoDeviceDataList.stream()
-                           .filter(brivoDeviceData -> !brivoDeviceData.getId().contains("~brivo"))
-                           .collect(Collectors.toList());
+                    List<BrivoDeviceData> filteredList = brivoDeviceDataList.stream()
+                            .filter(brivoDeviceData -> !brivoDeviceData.getId().contains("~brivo"))
+                            .collect(Collectors.toList());
 
                     _adapter.refresh(filteredList);
                     _adapter.notifyDataSetChanged();
@@ -382,5 +397,12 @@ public class BrivoDevicesFragment extends Fragment implements IRefreshableFragme
     @Override
     public void onAddThermostatSettingClicked() {
         Toast.makeText(_context, "Data saved", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onAddBrivoUserClicked(String bshUsername, String bshPassword) {
+        sharedPreferences.edit().putString("bshUserName", bshUsername).apply();
+        sharedPreferences.edit().putString("bshPassword", bshPassword).apply();
+        refresh(true);
     }
 }

@@ -53,6 +53,7 @@ public class SectionViewPagerAdapter extends FragmentStateAdapter {
     public int FRAGMENT_POSITION_CHAT;
     public int FRAGMENT_POSITION_COMMUNITY_NOTIFICATIONS;
 
+
     private final String[] guestTabs = {
             Utilities.FRAGMENT_HOME,
             Utilities.FRAGMENT_ACCESS_POINTS,

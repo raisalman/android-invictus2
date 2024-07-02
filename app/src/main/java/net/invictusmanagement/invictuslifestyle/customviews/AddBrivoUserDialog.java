@@ -1,9 +1,12 @@
 package net.invictusmanagement.invictuslifestyle.customviews;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -22,6 +25,7 @@ import androidx.fragment.app.DialogFragment;
 import com.google.android.material.textview.MaterialTextView;
 
 import net.invictusmanagement.invictuslifestyle.R;
+import net.invictusmanagement.invictuslifestyle.activities.TabbedActivity;
 import net.invictusmanagement.invictuslifestyle.interfaces.SetOnAddBrivoUserDialogClick;
 import net.invictusmanagement.invictuslifestyle.interfaces.SetOnAddVendorDialogClick;
 import net.invictusmanagement.invictuslifestyle.models.AddBrivoSmartHomeUser;
@@ -44,6 +48,7 @@ public class AddBrivoUserDialog extends DialogFragment implements View.OnClickLi
     private boolean isUnFormatted = false;
 
     public AddBrivoUserDialog() {
+
     }
 
     @SuppressLint("ValidFragment")
@@ -139,12 +144,14 @@ public class AddBrivoUserDialog extends DialogFragment implements View.OnClickLi
         WebService.getInstance().addBrivoSmartHomeUser(brivoSmartHomeUser, new RestCallBack<ResponseBody>() {
             @Override
             public void onResponse(ResponseBody response) {
+//                sharedPreferences.edit().putString("bshUserName", brivoSmartHomeUser.bshPassword).apply();
+//                sharedPreferences.edit().putString("bshPassword", brivoSmartHomeUser.bshPassword).apply();
                 ProgressDialog.dismissProgress();
                 if (response != null) {
                     Toast.makeText(getContext(), "Brivo user has been added successfully!", Toast.LENGTH_SHORT).show();
                     tvUserName.setText("");
                     tvPassword.setText("");
-                    listener.onAddBrivoUserClicked();
+                    listener.onAddBrivoUserClicked(brivoSmartHomeUser.bshUsername, brivoSmartHomeUser.bshPassword);
                 } else Toast.makeText(getContext(), "Something went wrong, Please try again later!", Toast.LENGTH_SHORT).show();
                 dismissDialog();
             }

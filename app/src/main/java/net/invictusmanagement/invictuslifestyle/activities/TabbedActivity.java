@@ -294,6 +294,7 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
 
         _sectionViewPagerAdapter = new SectionViewPagerAdapter(this);
         _viewPager.setAdapter(_sectionViewPagerAdapter);
+        _viewPager.setOffscreenPageLimit(1);
         new TabLayoutMediator(_tabLayout, _viewPager, (tab, position) -> {
 
             if (role.equalsIgnoreCase(getString(R.string.role_vendor))) {

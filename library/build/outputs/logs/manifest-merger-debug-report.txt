@@ -1,26 +1,14 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml:1:1-55
-INJECTED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml:1:1-55
-INJECTED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml:1:1-55
-INJECTED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml:1:1-55
-INJECTED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml:1:1-55
-INJECTED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml:1:1-55
-INJECTED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml:1:1-55
+ADDED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml:1:1-13
+INJECTED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml:1:1-13
+INJECTED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml:1:1-13
 	package
-		ADDED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml:1:11-52
 		INJECTED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml
-		INJECTED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml
-	android:versionName
-		INJECTED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml
-		ADDED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml:1:1-55
+		ADDED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml:1:1-13
 		INJECTED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml:1:1-55
-	android:versionCode
-		INJECTED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml
-		ADDED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml:1:1-55
-		INJECTED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml
+		ADDED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml:1:1-13
 uses-sdk
 INJECTED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\Invictus Lifestyle\android-invictus2\library\src\main\AndroidManifest.xml

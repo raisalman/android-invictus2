@@ -197,4 +197,8 @@ public class BrivoDevicesAdapter extends RecyclerView.Adapter<BrivoDevicesAdapte
             return super.toString() + " '" + tvItemName.getText() + "'";
         }
     }
+
+    public  List<BrivoDeviceData> getDataSource() {
+        return _dataSource;
+    }
 }
