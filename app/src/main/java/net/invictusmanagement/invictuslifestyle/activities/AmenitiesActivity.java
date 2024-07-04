@@ -35,7 +35,7 @@ import java.util.List;
 public class AmenitiesActivity extends AppCompatActivity implements AmenitiesListFragmentInteractionListener {
 
     public static AmenitiesAdapter amenitiesAdapter;
-    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(TabbedActivity.tabbedActivity);
+    SharedPreferences sharedPreferences;
     private SwipeRefreshLayout _swipeRefreshLayout;
     private Context _context;
     private RecyclerView _recyclerView;
@@ -48,6 +48,8 @@ public class AmenitiesActivity extends AppCompatActivity implements AmenitiesLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_amenities);
+        //initiating shared preferences variable in onCreate instead globaly
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(AmenitiesActivity.this);
         toolBar();
         initControls();
     }

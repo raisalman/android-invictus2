@@ -30,6 +30,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -71,7 +73,12 @@ public class FirebaseService extends FirebaseMessagingService {
     public void onNewToken(@NonNull String token) {
         super.onNewToken(token);
         FCM_token = token;
-        startService(new Intent((Context) this, ChatRegistrationIntentService.class));
+
+        // implemented by AD Rai
+        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(ChatRegistrationIntentService.class).build();
+        WorkManager.getInstance(this).enqueue(workRequest);
+
+//        startService(new Intent((Context) this, ChatRegistrationIntentService.class));
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         String activationCode = sharedPreferences.getString("activationCode", null);
         if (!TextUtils.isEmpty(activationCode)) {

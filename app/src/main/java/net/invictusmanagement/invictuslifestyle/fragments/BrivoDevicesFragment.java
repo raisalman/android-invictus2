@@ -58,7 +58,7 @@ public class BrivoDevicesFragment extends Fragment implements SetOnAddBrivoUserD
     public static SwipeRefreshLayout _swipeRefreshLayout;
     public static Context _context;
     public static TextView _feedback;
-    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences((Context) TabbedActivity.tabbedActivity);
+    SharedPreferences sharedPreferences;
     private static BrivoDevicesFragment instance;
 
     private AddBrivoUserDialog brivoUserDialog = null;
@@ -91,6 +91,13 @@ public class BrivoDevicesFragment extends Fragment implements SetOnAddBrivoUserD
 
         View view = inflater.inflate(R.layout.fragment_brivo_devices, container, false);
         instance = this;
+
+        Context context = getContext();
+        if (context != null) {
+            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        } else {
+            Log.e("MyFragment", "Context is null, cannot initialize SharedPreferences.");
+        }
         if (view instanceof SwipeRefreshLayout) {
 
 
@@ -226,9 +233,12 @@ public class BrivoDevicesFragment extends Fragment implements SetOnAddBrivoUserD
             @Override
             public void onFailure(WSException wse) {
                 if (brivoUserDialog != null) {
-                    if (!brivoUserDialog.isHidden()) {
-                        brivoUserDialog.show(getActivity().getSupportFragmentManager(), "addBrivoUserDialog");
-                        brivoUserDialog.setCancelable(false);
+                    //added getActivity null check here
+                    if (!(brivoUserDialog.isHidden())) {
+                        if(getActivity() != null) {
+                            brivoUserDialog.show(getActivity().getSupportFragmentManager(), "addBrivoUserDialog");
+                            brivoUserDialog.setCancelable(false);
+                        }
                     } else {
                         brivoUserDialog.dismiss();
                     }

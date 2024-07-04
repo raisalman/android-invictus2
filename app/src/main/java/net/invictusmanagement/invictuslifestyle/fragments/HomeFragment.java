@@ -2,6 +2,7 @@ package net.invictusmanagement.invictuslifestyle.fragments;
 
 import static net.invictusmanagement.invictuslifestyle.activities.TabbedActivity.openPathLogin;
 
+import android.Manifest;
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
 import android.bluetooth.BluetoothAdapter;
@@ -9,7 +10,9 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CancellationSignal;
 import android.os.Handler;
@@ -31,6 +34,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -46,6 +50,11 @@ import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.ui.StyledPlayerView;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import net.invictusmanagement.invictuslifestyle.MyApplication;
 import net.invictusmanagement.invictuslifestyle.R;
@@ -837,7 +846,12 @@ public class HomeFragment extends Fragment implements IRefreshableFragment {
                     if (user.isEnableBrivoIntegration()) {
                         BrivoSampleConstants.CLIENT_ID = user.getBrivoDoorAccessClientId();
                         BrivoSampleConstants.CLIENT_SECRET = user.getBrivoDoorAccessClientSecret();
-                        ((MyApplication) getActivity().getApplication()).initializeBrivoSDK();
+                        //null check added to avoid crash
+                        if (getActivity() != null) {
+                            ((MyApplication) getActivity().getApplication()).initializeBrivoSDK();
+                        } else {
+                            refresh();
+                        }
                     }
                     sharedPreferences.edit()
                             .putString("peekId", user.getEenUserName()).apply();
@@ -1173,6 +1187,9 @@ public class HomeFragment extends Fragment implements IRefreshableFragment {
         builder.setPositiveButton("Turn On", (dialog, which) -> {
             dialog.cancel();
             BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+            if (ActivityCompat.checkSelfPermission(this.requireContext(), Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+               requestBluetoothPermissions();
+            }
             bluetoothAdapter.enable();
             new Handler().postDelayed(() -> unlockNearByBrivoDoor(), 2000);
         });
@@ -1180,6 +1197,55 @@ public class HomeFragment extends Fragment implements IRefreshableFragment {
         builder.show();
     }
 
+    private void requestBluetoothPermissions() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            // Android 12 and above
+            Dexter.withContext(getContext())
+                    .withPermissions(
+                            Manifest.permission.BLUETOOTH_SCAN,
+                            Manifest.permission.BLUETOOTH_CONNECT
+                    ).withListener(new MultiplePermissionsListener() {
+                        @Override
+                        public void onPermissionsChecked(MultiplePermissionsReport report) {
+                            if (report.areAllPermissionsGranted()) {
+                               showDialogToEnableBluetooth();
+                            } else {
+                                // Permissions denied
+                                Toast.makeText(getContext(), "Bluetooth permissions are required for this feature.", Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                        @Override
+                        public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                            // This is the place to show a dialog to explain why the app needs these permissions
+                            token.continuePermissionRequest();
+                        }
+                    }).check();
+        } else {
+            // Android below 12
+            Dexter.withContext(getContext())
+                    .withPermissions(
+                            Manifest.permission.BLUETOOTH,
+                            Manifest.permission.BLUETOOTH_ADMIN
+                    ).withListener(new MultiplePermissionsListener() {
+                        @Override
+                        public void onPermissionsChecked(MultiplePermissionsReport report) {
+                            if (report.areAllPermissionsGranted()) {
+                               showDialogToEnableBluetooth();
+                            } else {
+                                // Permissions denied
+                                Toast.makeText(getContext(), "Bluetooth permissions are required for this feature.", Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                        @Override
+                        public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                            // This is the place to show a dialog to explain why the app needs these permissions
+                            token.continuePermissionRequest();
+                        }
+                    }).check();
+        }
+    }
     private void unlockNearByBrivoDoor() {
         if (!isBluetoothEnabled()) {
             showDialogToEnableBluetooth();

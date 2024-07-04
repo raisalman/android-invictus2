@@ -1,6 +1,7 @@
 package net.invictusmanagement.invictuslifestyle.service;
 
 import android.app.IntentService;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
@@ -10,23 +11,48 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.work.Worker;
+import androidx.work.WorkerParameters;
+
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.microsoft.windowsazure.messaging.NotificationHub;
 
 import net.invictusmanagement.invictuslifestyle.BuildConfig;
+import net.invictusmanagement.invictuslifestyle.MyApplication;
 import net.invictusmanagement.invictuslifestyle.utils.Utilities;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class ChatRegistrationIntentService extends IntentService {
+public class ChatRegistrationIntentService extends Worker {
 
-    public ChatRegistrationIntentService() {
-        super(Utilities.TAG);
+    public ChatRegistrationIntentService(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+        super(context, workerParams);
     }
 
+//    public ChatRegistrationIntentService() {
+//        super(Utilities.TAG);
+//    }
+
+//    @Override
+//    protected void onHandleIntent(Intent intent) {
+//        FirebaseMessaging.getInstance().getToken()
+//                .addOnCompleteListener(task -> {
+//                    if (task.isSuccessful()) {
+//                        try {
+//                            registrationId(task.getResult());
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                });
+//    }
+
+
+    @NonNull
     @Override
-    protected void onHandleIntent(Intent intent) {
+    public Result doWork() {
         FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -37,16 +63,17 @@ public class ChatRegistrationIntentService extends IntentService {
                         }
                     }
                 });
+        return Result.success();
     }
 
     private void registrationId(String firebaseToken) {
         try {
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.context);
             String activationCode = sharedPreferences.getString("activationCode", null);
             if (!TextUtils.isEmpty(activationCode)) {
 //                if (!sharedPreferences.getString("firebaseToken", "").equals(firebaseToken)) {
                 NotificationHub hub = new NotificationHub(BuildConfig.VideoHubName,
-                        BuildConfig.HubListenConnectionString, this);
+                        BuildConfig.HubListenConnectionString, MyApplication.context);
                 Log.d(Utilities.TAG, "Notification Hubs Registration refreshing with firebase token: " + firebaseToken);
 //                Toast.makeText(this, "Notification Hubs Registration refreshing with firebase token: " + firebaseToken, Toast.LENGTH_LONG).show();
                 Log.d(Utilities.TAG, "Activation Code: " + activationCode);
@@ -59,7 +86,7 @@ public class ChatRegistrationIntentService extends IntentService {
     }
 
     private void registerHub(NotificationHub hub, String firebaseToken, String activationCode) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MyApplication.context);
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
 
@@ -89,5 +116,4 @@ public class ChatRegistrationIntentService extends IntentService {
             }
         });
     }
-
 }

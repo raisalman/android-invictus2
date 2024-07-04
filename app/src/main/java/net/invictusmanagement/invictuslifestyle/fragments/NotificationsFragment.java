@@ -42,7 +42,7 @@ public class NotificationsFragment extends Fragment implements IRefreshableFragm
     public static Context _context;
     public static TextView _feedback;
     public static NotificationCount notificationCount;
-    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(TabbedActivity.tabbedActivity);
+    SharedPreferences sharedPreferences;
     private static NotificationsFragment instance;
 
     public NotificationsFragment() {
@@ -70,6 +70,14 @@ public class NotificationsFragment extends Fragment implements IRefreshableFragm
 
         View view = inflater.inflate(R.layout.fragment_notifications_list, container, false);
         instance = this;
+
+        Context context = getContext();
+        if (context != null) {
+            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        } else {
+            Log.e("MyFragment", "Context is null, cannot initialize SharedPreferences.");
+        }
+
         if (view instanceof SwipeRefreshLayout) {
 
             if (TabbedActivity.isGuestUser) {

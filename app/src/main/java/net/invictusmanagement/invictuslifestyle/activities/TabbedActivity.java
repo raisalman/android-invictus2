@@ -58,6 +58,8 @@ import androidx.core.content.FileProvider;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 import com.brivo.sdk.BrivoSDKInitializationException;
 import com.brivo.sdk.access.BrivoSDKAccess;
@@ -879,7 +881,9 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
 //        checkPermission();
         askPermissionOpenPath();
         //check full screen intent permission for android 14 and later
-        checkFullScreenIntentPermission();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            checkFullScreenIntentPermission();
+        }
         if (!isGuestUser) {
             if (isScreenVisible) {
                 initHubConnection();
@@ -983,7 +987,12 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
         if (Utilities.checkPlayServices(this)) {
             LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(handler, new IntentFilter("notificationReceived"));
             startNewService();
-            startService(new Intent((Context) TabbedActivity.this, ChatRegistrationIntentService.class));
+
+            // implemented by AD Rai
+            OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(ChatRegistrationIntentService.class).build();
+            WorkManager.getInstance(this).enqueue(workRequest);
+
+//            startService(new Intent((Context) TabbedActivity.this, ChatRegistrationIntentService.class));
 
             FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
@@ -1032,7 +1041,9 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
         builder.setPositiveButton("Open Setting", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                navigateToManageFsiSettings();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+                    navigateToManageFsiSettings();
+                }
             }
         });
 
@@ -1055,13 +1066,8 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
 
             boolean canUseFullScreenIntent = notificationManager.canUseFullScreenIntent();
 
-//        PackageManager packageManager = getPackageManager();
-//        boolean hasFsiPermission = packageManager.checkPermission(
-//                Manifest.permission.USE_FULL_SCREEN_INTENT, getPackageName())
-//                == PackageManager.PERMISSION_GRANTED;
-
             if (!canUseFullScreenIntent) {
-                // User doesn't have FSI permission, navigate to settings
+               //show full screen notification permission dialog
                 showFullScreenPermissionAlert();
             }
         }
@@ -2395,14 +2401,7 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
             dialog.cancel();
             BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                return;
+                requestBluetoothPermissions();
             }
             bluetoothAdapter.enable();
             new Handler().postDelayed(() -> unlockBrivoDoor(), 2000);
@@ -2411,6 +2410,55 @@ public class TabbedActivity extends BaseActivity implements AccessPointsListFrag
         builder.show();
     }
 
+    private void requestBluetoothPermissions() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            // Android 12 and above
+            Dexter.withContext(this)
+                    .withPermissions(
+                            Manifest.permission.BLUETOOTH_SCAN,
+                            Manifest.permission.BLUETOOTH_CONNECT
+                    ).withListener(new MultiplePermissionsListener() {
+                        @Override
+                        public void onPermissionsChecked(MultiplePermissionsReport report) {
+                            if (report.areAllPermissionsGranted()) {
+                                showDialogToEnableBluetooth();
+                            } else {
+                                // Permissions denied
+                                Toast.makeText(TabbedActivity.this, "Bluetooth permissions are required for this feature.", Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                        @Override
+                        public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                            // This is the place to show a dialog to explain why the app needs these permissions
+                            token.continuePermissionRequest();
+                        }
+                    }).check();
+        } else {
+            // Android below 12
+            Dexter.withContext(this)
+                    .withPermissions(
+                            Manifest.permission.BLUETOOTH,
+                            Manifest.permission.BLUETOOTH_ADMIN
+                    ).withListener(new MultiplePermissionsListener() {
+                        @Override
+                        public void onPermissionsChecked(MultiplePermissionsReport report) {
+                            if (report.areAllPermissionsGranted()) {
+                                showDialogToEnableBluetooth();
+                            } else {
+                                // Permissions denied
+                                Toast.makeText(TabbedActivity.this, "Bluetooth permissions are required for this feature.", Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                        @Override
+                        public void onPermissionRationaleShouldBeShown(List<PermissionRequest> permissions, PermissionToken token) {
+                            // This is the place to show a dialog to explain why the app needs these permissions
+                            token.continuePermissionRequest();
+                        }
+                    }).check();
+        }
+    }
     private void showDialogToEnableLocation() {
         AlertDialog.Builder builder = new AlertDialog.Builder((Context) TabbedActivity.this);
         builder.setTitle("Enable Location");
